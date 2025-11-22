@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ditos Painéis | O Portal de Pouso Alegre</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* --- VARIÁVEIS & RESET (IDENTITY SYSTEM) --- */
+        :root {
+            --carbon-black: #111111; /* Fundo Premium */
+            --photon-white: #F5F5F5; /* Texto Leitura */
+            --signal-yellow: #FFD500; /* Acento Ditos - Atenção */
+            --concrete-gray: #222222; /* Cards */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--carbon-black);
+            color: var(--photon-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
+        p { font-weight: 300; line-height: 1.6; opacity: 0.9; font-size: 1.1rem; }
+        
+        .text-highlight { color: var(--signal-yellow); }
+
+        /* --- COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--signal-yellow);
+            color: var(--carbon-black);
+            padding: 18px 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 30px;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 213, 0, 0.2);
+        }
+
+        /* --- HEADER / LOGO --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(17,17,17,0.7), rgba(17,17,17,0.4), var(--carbon-black)), url('foto-rodovia.jpg.jpg') no-repeat center/cover;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2.5rem, 5vw, 4.5rem); 
+            max-width: 900px; 
+            margin-bottom: 20px; 
+            color: var(--photon-white);
+        }
+        
+        .hero p { 
+            font-size: clamp(1.1rem, 2vw, 1.4rem); 
+            max-width: 650px; 
+            margin-bottom: 10px; 
+            color: #ddd;
+            border-left: 3px solid var(--signal-yellow);
+            padding-left: 20px;
+        }
+
+        /* --- SCROLLYTELLING SECTION --- */
+        .scrolly-container {
+            display: flex;
+            flex-direction: column; 
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .scrolly-container {
+                flex-direction: row;
+            }
+        }
+
+        .visual-side {
+            flex: 1;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            background-image: url('foto-mercado.jpg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            display: none;
+        }
+        @media (min-width: 768px) { .visual-side { display: block; } }
+
+        .text-side {
+            flex: 1;
+            z-index: 2;
+            background: transparent;
+        }
+
+        .step-card {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(17,17,17,0.95);
+        }
+
+        .step-card h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--signal-yellow); }
+
+        /* --- PRICING SECTION --- */
+        .pricing {
+            padding: 100px 10%;
+            text-align: center;
+            background: var(--carbon-black);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .price-card {
+            background: var(--concrete-gray);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: left;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--signal-yellow);
+            background: #1a1a1a;
+            position: relative;
+        }
+        .price-card.featured::before {
+            content: 'MELHOR CUSTO-BENEFÍCIO';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--signal-yellow);
+            color: black;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        .price-value { font-size: 2.5rem; font-weight: 900; margin: 20px 0 10px; }
+        .price-period { font-size: 0.9rem; opacity: 0.7; margin-bottom: 20px; }
+        .price-features li { list-style: none; margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .price-features li::before { content: '✓'; color: var(--signal-yellow); position: absolute; left: 0; }
+
+        /* --- SPECS --- */
+        .specs {
+            padding: 60px 10%;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #333;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        /* Ajuste para o item de localização ficar legível */
+        .spec-item { flex: 1 1 200px; }
+        .spec-item h4 { color: var(--signal-yellow); margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 1px; }
+        .spec-item p { font-size: 1rem; line-height: 1.4; color: #ccc; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #666;
+            background-color: #0a0a0a;
+        }
+        footer a {
+            color: var(--signal-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        footer a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Logo 1.png" alt="Ditos Painéis Logo" class="nav-logo">
+        <a href="#contato" style="color: var(--photon-white); text-decoration: none; font-weight: 500;">Contato</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate-hero">A 200 Metros de Tudo o que Importa.</h1>
+            <p class="animate-hero">O portal de entrada da cidade. <br>Sua marca, inevitável para 40.000 veículos todos os dias.</p>
+            <a href="#precos" class="btn animate-hero">Ver Disponibilidade</a>
+        </div>
+    </section>
+
+    <main class="scrolly-container">
+        <div class="visual-side"></div> 
+        
+        <div class="text-side">
+            <div class="step-card">
+                <h2>Onde a Elite Passa</h2>
+                <p>Localizado estrategicamente na Rodovia JK (Km 103), nosso ponto impacta a decisão de compra antes dela acontecer.</p>
+                <br>
+                <p>Estamos na <strong>entrada principal da cidade</strong>, vizinhos do Hipermercado Baronesa e Construarte.</p>
+            </div>
+
+            <div class="step-card">
+                <h2>Digital é Pulável. <br>Ditos é Paisagem.</h2>
+                <p>Na internet, seu anúncio dura milissegundos. Aqui, ele é uma estrutura de aço de <strong>9x3 metros</strong>.</p>
+                <br>
+                <p>Iluminação <strong>LED Frontal</strong> garante que sua marca brilhe enquanto a concorrência dorme.</p>
+            </div>
+
+            <div class="step-card">
+                <h2>Sua Arte. Nossa Estrutura.</h2>
+                <p>Nós cuidamos da engenharia. A produção da lona? Você é livre para usar seu fornecedor ou nossos parceiros homologados.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="specs">
+        <div class="spec-item">
+            <h4>DIMENSÕES</h4>
+            <p>9,00m x 3,00m</p>
+        </div>
+        <div class="spec-item">
+            <h4>ILUMINAÇÃO</h4>
+            <p>LED Frontal (Noite/Dia)</p>
+        </div>
+        <div class="spec-item">
+            <h4>TRÁFEGO</h4>
+            <p>40.000 Veículos/Dia</p>
+        </div>
+        <div class="spec-item">
+            <h4>LOCALIZAÇÃO</h4>
+            <p>
+                Rod. JK - Km 103<br>
+                Vila Beatriz<br>
+                Pouso Alegre - MG<br>
+                CEP 37550-000
+            </p>
+        </div>
+    </section>
+
+    <section id="precos" class="pricing">
+        <h2>Domínio da Paisagem</h2>
+        <p>Escolha o impacto que sua marca precisa.</p>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Spot Rápido</h3>
+                <p class="price-period">Quinzena</p>
+                <div class="price-value">R$ 1.500</div>
+                <ul class="price-features">
+                    <li>Ideal para promoções</li>
+                    <li>Datas comemorativas</li>
+                    <li>Entrada Expressa</li>
+                </ul>
+            </div>
+
+            <div class="price-card">
+                <h3>Mensal</h3>
+                <p class="price-period">30 Dias</p>
+                <div class="price-value">R$ 2.500</div>
+                <ul class="price-features">
+                    <li>Branding e Fixação</li>
+                    <li>Ciclo completo de vendas</li>
+                    <li>Troca de arte (Opcional)</li>
+                </ul>
+            </div>
+
+            <div class="price-card featured">
+                <h3>Plano Smart</h3>
+                <p class="price-period">Semestral (Valor Mensal)</p>
+                <div class="price-value text-highlight">R$ 1.750</div>
+                <p style="font-size: 0.8rem; color: #888;">Total do contrato: R$ 10.500</p>
+                <ul class="price-features">
+                    <li><strong>Economia de 30%</strong></li>
+                    <li>Domínio territorial</li>
+                    <li>Preferência de renovação</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="https://wa.me/5535999463566?text=Ol%C3%A1%2C%20vi%20o%20site%20da%20Ditos%20Paineis%20e%20gostaria%20de%20garantir%20meu%20espa%C3%A7o." class="btn" id="contato" style="margin-top: 50px;">
+            Reservar Espaço no WhatsApp
+        </a>
+    </section>
+
+    <footer>
+        <p>Ditos Painéis © 2025.</p>
+        <p>Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz, Pouso Alegre - MG, 37550-000.</p>
+        <br>
+        <p><a href="mailto:ditospaineis@gmail.com">ditospaineis@gmail.com</a></p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Animação Hero
+        gsap.from(".animate-hero", {
+            y: 60, 
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.25,
+            ease: "power3.out"
+        });
+        
+        gsap.from(".nav-logo", {
+            scale: 0.9,
+            opacity: 0,
+            duration: 1,
+            ease: "elastic.out(1, 0.5)"
+        });
+
+        // 2. Animação Pricing
+        gsap.from(".price-card", {
+            scrollTrigger: {
+                trigger: ".pricing",
+                start: "top 80%",
+            },
+            y: 100,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+        });
+
+        // 3. Texto Scrollytelling
+        gsap.utils.toArray('.step-card').forEach(step => {
+            gsap.from(step, {
+                scrollTrigger: {
+                    trigger: step,
+                    start: "top 80%",
+                    end: "top 20%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0.2,
+                duration: 0.5
+            });
+        });
+    </script>
+</body>
+</html>
