@@ -99,22 +99,20 @@
         .spec-item { flex: 1 1 200px; }
         .spec-item h4 { color: var(--signal-yellow); margin-bottom: 10px; font-size: 0.9rem; }
 
-        /* --- NOVA SEÇÃO: MAPA --- */
+        /* --- MAPA ESTRATÉGICO RECALIBRADO --- */
         .map-section {
             display: flex;
             flex-wrap: wrap;
-            background-color: #161616; /* Levemente mais claro que o fundo */
+            background-color: #161616;
         }
         
         .map-container {
             flex: 2;
             min-width: 300px;
-            height: 500px;
+            height: 550px; 
             position: relative;
-            filter: grayscale(100%) invert(90%); /* Estilo Dark Map inicial */
-            transition: filter 0.5s;
+            filter: none; 
         }
-        .map-container:hover { filter: none; /* Fica colorido ao passar o mouse */ }
 
         .map-info {
             flex: 1;
@@ -130,8 +128,8 @@
         .landmark-list { margin-top: 30px; }
         .landmark-item { 
             display: flex; 
-            align-items: center; 
-            margin-bottom: 20px; 
+            align-items: flex-start; 
+            margin-bottom: 25px; 
             color: #ccc; 
             font-size: 1rem;
         }
@@ -140,7 +138,21 @@
             background-color: var(--signal-yellow); 
             border-radius: 50%; 
             margin-right: 15px;
+            margin-top: 5px;
+            flex-shrink: 0;
             box-shadow: 0 0 10px rgba(255, 213, 0, 0.5);
+        }
+
+        .highlight-badge {
+            background: rgba(255, 213, 0, 0.1);
+            border: 1px solid var(--signal-yellow);
+            color: var(--signal-yellow);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         /* SEÇÃO DE PREÇOS */
@@ -254,30 +266,33 @@
                 scrolling="no" 
                 marginheight="0" 
                 marginwidth="0" 
-                src="https://maps.google.com/maps?q=Rodovia+Juscelino+Kubitschek+Km+103+Pouso+Alegre&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                style="border:0; filter: invert(90%) hue-rotate(180deg);">
+                src="https://maps.google.com/maps?q=-22.2202,-45.9138&t=&z=17&ie=UTF8&iwloc=&output=embed">
             </iframe>
         </div>
         <div class="map-info">
             <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Raio de Influência</h3>
-            <p style="font-size: 0.9rem; color: #888;">Pontos estratégicos a menos de 1 minuto do outdoor:</p>
+            <p style="font-size: 0.9rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
             
             <div class="landmark-list">
                 <div class="landmark-item">
                     <div class="landmark-icon"></div>
-                    <span><strong>Outdoor Ditos</strong> (Entrada da Cidade)</span>
+                    <span><strong>Outdoor Ditos</strong> (Em frente à Construarte)</span>
                 </div>
+                
+                <div class="landmark-item">
+                    <div class="landmark-icon" style="background-color: #fff;"></div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="color: #fff; font-weight: 600;">Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span>
+                        <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">
+                            Conexão direta entre o <strong>Colégio Anglo</strong> e o <strong>Costela no Bafo</strong>.
+                            <br>Distância: Aprox. 400m de alto tráfego AB.
+                        </span>
+                    </div>
+                </div>
+
                 <div class="landmark-item">
                     <div class="landmark-icon" style="background-color: #555;"></div>
-                    <span>Hipermercado Baronesa (300m)</span>
-                </div>
-                <div class="landmark-item">
-                    <div class="landmark-icon" style="background-color: #555;"></div>
-                    <span>Construarte (200m)</span>
-                </div>
-                <div class="landmark-item">
-                    <div class="landmark-icon" style="background-color: #555;"></div>
-                    <span>Acesso BR-459</span>
+                    <span>Hipermercado Baronesa (Vizinho)</span>
                 </div>
             </div>
         </div>
