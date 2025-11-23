@@ -31,7 +31,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
             background-color: var(--carbon-black);
@@ -56,38 +56,58 @@
             text-decoration: none;
             border-radius: 4px;
             margin-top: 30px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 213, 0, 0.3); }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(255, 213, 0, 0.3); 
+        }
 
-        /* FAB WhatsApp */
+        /* Animação Pulsação WhatsApp */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
         .fab-whatsapp {
             position: fixed; bottom: 30px; right: 30px;
             background-color: var(--whatsapp-green); color: white;
-            width: 60px; height: 60px; border-radius: 50%;
+            width: 65px; height: 65px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000;
             transition: transform 0.3s; text-decoration: none;
+            animation: pulse-green 2s infinite;
         }
-        .fab-whatsapp:hover { transform: scale(1.1); }
+        .fab-whatsapp:hover { transform: scale(1.1); animation: none; }
         .fab-whatsapp svg { width: 35px; height: 35px; fill: white; }
 
         /* Header */
         header {
             position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%;
             z-index: 100; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(17, 17, 17, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px); /* Efeito vidro fosco Apple */
+            transition: top 0.3s;
         }
         .nav-logo { height: 45px; width: auto; display: block; }
 
         /* Hero */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 10%; 
-            background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(17,17,17,0.4), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
+            position: relative; overflow: hidden;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); max-width: 900px; margin-bottom: 20px; color: #fff; }
-        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; color: #ddd; }
+        /* Background separado para efeito Parallax */
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%; /* Altura extra para scroll */
+            background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(17,17,17,0.3), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
+            z-index: -1;
+            will-change: transform;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); max-width: 900px; margin-bottom: 20px; color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; color: #eee; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         /* Scrollytelling */
         .scrolly-container { display: flex; flex-direction: column; position: relative; }
@@ -97,21 +117,28 @@
             flex: 1; height: 100vh; position: sticky; top: 0;
             background-image: url('mercado-1.jpg'); 
             background-size: cover; background-position: center; display: none;
+            transition: background-image 0.5s ease-in-out;
         }
         @media (min-width: 768px) { .visual-side { display: block; } }
 
         .text-side { flex: 1; background: rgba(17,17,17,0.95); z-index: 2; }
-        .step-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 40px; border-left: 1px solid rgba(255,255,255,0.1); }
+        .step-card { 
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 40px; 
+            border-left: 1px solid rgba(255,255,255,0.05); 
+            opacity: 0.3; transition: opacity 0.5s; /* Estado inicial opaco */
+        }
+        .step-card.active { opacity: 1; } /* Estado ativo */
         .step-card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--signal-yellow); }
 
         /* Specs */
         .specs { padding: 60px 10%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid #333; background-color: #111; }
-        .spec-item { flex: 1 1 200px; }
+        .spec-item { flex: 1 1 200px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid transparent; transition: 0.3s; }
+        .spec-item:hover { border-color: var(--signal-yellow); background: rgba(255,255,255,0.05); }
         .spec-item h4 { color: var(--signal-yellow); margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 1px; }
 
-        /* --- GALERIA DUPLA --- */
+        /* Galeria Dupla */
         .gallery-section { padding: 80px 5%; background-color: #0e0e0e; }
-        .gallery-header { margin-bottom: 30px; border-left: 5px solid var(--signal-yellow); padding-left: 20px; }
+        .gallery-header { margin-bottom: 30px; border-left: 5px solid var(--signal-yellow); padding-left: 20px; opacity: 0; /* Fade in via JS */ }
         .gallery-header h3 { font-size: 2rem; color: #fff; margin-bottom: 5px; }
         .gallery-header p { font-size: 1rem; color: #888; }
         
@@ -122,9 +149,12 @@
             .gallery-item.wide { grid-column: span 2; }
         }
         
-        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #333; height: 100%; min-height: 250px; }
-        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item { 
+            position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #333; height: 100%; min-height: 250px; 
+            opacity: 0; transform: translateY(30px); /* Posição inicial para animação */
+        }
+        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .gallery-item:hover img { transform: scale(1.08); }
         .video-tag { position: absolute; top: 15px; left: 15px; background: #cc0000; color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 700; border-radius: 4px; z-index: 10; letter-spacing: 1px; }
 
         /* Mapa */
@@ -132,16 +162,19 @@
         .map-container { flex: 2; min-width: 300px; height: 550px; position: relative; filter: none; }
         .map-info { flex: 1; min-width: 300px; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center; background: #1a1a1a; border-left: 1px solid #333; }
         .landmark-list { margin-top: 30px; }
-        .landmark-item { display: flex; align-items: flex-start; margin-bottom: 25px; color: #ccc; font-size: 1rem; }
+        .landmark-item { display: flex; align-items: flex-start; margin-bottom: 25px; color: #ccc; font-size: 1rem; opacity: 0; transform: translateX(-20px); }
         .landmark-icon { width: 12px; height: 12px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 15px; margin-top: 5px; flex-shrink: 0; box-shadow: 0 0 10px rgba(255, 213, 0, 0.5); }
         .highlight-badge { background: rgba(255, 213, 0, 0.1); border: 1px solid var(--signal-yellow); color: var(--signal-yellow); font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-weight: 700; text-transform: uppercase; }
 
         /* Preços */
         .pricing { padding: 100px 5%; background-color: var(--carbon-black); text-align: center; }
         .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 50px; }
-        .price-card { background: var(--concrete-gray); padding: 35px; border-radius: 12px; text-align: left; width: 100%; max-width: 350px; border: 1px solid #333; display: flex; flex-direction: column; }
-        .price-card.featured { border: 2px solid var(--signal-yellow); background: #181818; position: relative; transform: scale(1.05); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        @media (max-width: 768px) { .price-card.featured { transform: none; } }
+        .price-card { 
+            background: var(--concrete-gray); padding: 35px; border-radius: 12px; text-align: left; width: 100%; max-width: 350px; border: 1px solid #333; display: flex; flex-direction: column; 
+            opacity: 0; transform: translateY(50px); /* Animação */
+        }
+        .price-card.featured { border: 2px solid var(--signal-yellow); background: #181818; position: relative; transform: translateY(50px); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        @media (max-width: 768px) { .price-card.featured { transform: translateY(50px); } }
         .price-card.featured::before { content: 'MAIS VENDIDO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--signal-yellow); color: #000; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 20px; }
         .price-value { font-size: 2.2rem; font-weight: 900; margin: 15px 0 5px; color: #fff; }
         .price-period { font-size: 0.9rem; color: #888; margin-bottom: 20px; }
@@ -156,7 +189,7 @@
 </head>
 <body>
 
-    <a href="https://wa.me/5535999463566?text=Ol%C3%A1%2C%20estou%20no%20site%20e%20quero%20saber%20mais%20sobre%20o%20outdoor." class="fab-whatsapp" target="_blank" title="Falar no WhatsApp">
+    <a href="https://wa.me/5535999463566?text=Ol%C3%A1%2C%20vi%20o%20v%C3%ADdeo%20do%20estacionamento%20no%20site%20e%20fiquei%20interessado." class="fab-whatsapp" target="_blank" title="Falar no WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-26.6l-6.7-4.2-69.8 18.3 18.6-68.1-4.4-6.9c-18.3-29.1-28-63.1-28-99.2 0-101.5 82.6-184.1 184.1-184.1 49.1 0 95.4 19.1 130.1 53.9 34.8 34.8 53.9 81.1 53.9 130.1-.1 101.5-82.6 184.1-184.1 184.1z"/></svg>
     </a>
 
@@ -166,6 +199,7 @@
     </header>
 
     <section class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>A 200 Metros de Tudo o que Importa.</h1>
             <p>O portal de entrada da cidade. <br>Sua marca, inevitável para 40.000 veículos todos os dias.</p>
@@ -204,14 +238,13 @@
         
         <div class="gallery-header">
             <h3>Lado Mercado (Varejo)</h3>
-            <p>Impacto visual direto para consumidores do Hipermercado Baronesa e complexo comercial.</p>
+            <p>Impacto visual direto para consumidores do Hipermercado Baronesa.</p>
         </div>
         <div class="gallery-grid">
             <div class="gallery-item video-highlight">
                 <span class="video-tag">FLUXO REAL</span>
-                <video controls poster="mercado-1.jpg" muted loop>
+                <video controls poster="mercado-1.jpg" muted loop autoplay playsinline>
                     <source src="video-estacionamento.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeos.
                 </video>
             </div>
             <div class="gallery-item"><img src="mercado-1.jpg" alt="Vista Mercado 1" loading="lazy"></div>
@@ -222,7 +255,7 @@
 
         <div class="gallery-header" style="margin-top: 80px;">
             <h3>Lado Rodovia (Branding)</h3>
-            <p>Visibilidade inevitável para 40.000 veículos/dia na entrada e saída da cidade.</p>
+            <p>Visibilidade inevitável para 40.000 veículos/dia.</p>
         </div>
         <div class="gallery-grid" style="margin-bottom: 0;">
             <div class="gallery-item wide"><img src="rodovia-1.jpg" alt="Vista Rodovia" loading="lazy"></div>
@@ -245,7 +278,7 @@
                     <div class="landmark-icon" style="background-color: #fff;"></div>
                     <div style="display: flex; flex-direction: column;">
                         <span style="color: #fff; font-weight: 600;">Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span>
-                        <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">Conexão Anglo e Costela no Bafo.<br>Distância: Aprox. 400m de alto tráfego AB.</span>
+                        <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">Conexão Anglo e Costela no Bafo.<br>Distância: Aprox. 400m.</span>
                     </div>
                 </div>
                 <div class="landmark-item"><div class="landmark-icon" style="background-color: #555;"></div> <span>Hipermercado Baronesa (Vizinho)</span></div>
@@ -282,13 +315,57 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-        gsap.from(".hero-content", { y: 50, opacity: 0, duration: 1.5, ease: "power3.out" });
+
+        // 1. Hero Parallax & Entry
+        gsap.to(".hero-bg", {
+            scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+            y: 200 // Background move mais devagar que o scroll
+        });
+        gsap.from(".hero-content > *", {
+            y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2
+        });
+
+        // 2. Scrollytelling Ativo
         gsap.utils.toArray('.step-card').forEach(step => {
-            gsap.from(step, {
-                scrollTrigger: { trigger: step, start: "top 85%", end: "top 20%", toggleActions: "play none none reverse" },
-                opacity: 0.3, duration: 0.5
+            ScrollTrigger.create({
+                trigger: step,
+                start: "top 60%",
+                end: "top 30%",
+                onEnter: () => step.classList.add('active'),
+                onLeaveBack: () => step.classList.remove('active')
             });
         });
+
+        // 3. Galeria (Efeito Cascata)
+        gsap.utils.toArray('.gallery-header').forEach(header => {
+            gsap.to(header, {
+                scrollTrigger: { trigger: header, start: "top 80%" },
+                opacity: 1, duration: 0.8
+            });
+        });
+        
+        // Anima cada grupo de imagens separadamente
+        let groups = document.querySelectorAll('.gallery-grid');
+        groups.forEach(group => {
+            let items = group.querySelectorAll('.gallery-item');
+            gsap.to(items, {
+                scrollTrigger: { trigger: group, start: "top 75%" },
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)"
+            });
+        });
+
+        // 4. Mapa Landmarks
+        gsap.to(".landmark-item", {
+            scrollTrigger: { trigger: ".map-info", start: "top 70%" },
+            opacity: 1, x: 0, duration: 0.6, stagger: 0.2
+        });
+
+        // 5. Preços (Subida com impacto)
+        gsap.to(".price-card", {
+            scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" },
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out"
+        });
+
     </script>
 </body>
 </html>
