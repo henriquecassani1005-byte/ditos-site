@@ -11,7 +11,7 @@
     <meta property="og:image" content="rodovia-2.jpg">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/png" href="Logo 1.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@
             box-shadow: 0 10px 20px rgba(255, 213, 0, 0.3); 
         }
 
-        /* Animação Pulsação WhatsApp */
+        /* FAB WhatsApp */
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -89,19 +89,24 @@
             position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%;
             z-index: 100; display: flex; justify-content: space-between; align-items: center;
             background: rgba(17, 17, 17, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px); /* Efeito vidro fosco Apple */
+            backdrop-filter: blur(15px);
             transition: top 0.3s;
         }
-        .nav-logo { height: 45px; width: auto; display: block; }
+        /* Ajuste da Logo para PNG Transparente */
+        .nav-logo { 
+            height: 40px; /* Levemente menor para ficar elegante */
+            width: auto; 
+            display: block; 
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Sombra para destacar no fundo escuro */
+        }
 
         /* Hero */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 10%; 
             position: relative; overflow: hidden;
         }
-        /* Background separado para efeito Parallax */
         .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 120%; /* Altura extra para scroll */
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
             background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(17,17,17,0.3), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
             z-index: -1;
             will-change: transform;
@@ -125,9 +130,9 @@
         .step-card { 
             min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 40px; 
             border-left: 1px solid rgba(255,255,255,0.05); 
-            opacity: 0.3; transition: opacity 0.5s; /* Estado inicial opaco */
+            opacity: 0.3; transition: opacity 0.5s;
         }
-        .step-card.active { opacity: 1; } /* Estado ativo */
+        .step-card.active { opacity: 1; }
         .step-card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--signal-yellow); }
 
         /* Specs */
@@ -138,7 +143,7 @@
 
         /* Galeria Dupla */
         .gallery-section { padding: 80px 5%; background-color: #0e0e0e; }
-        .gallery-header { margin-bottom: 30px; border-left: 5px solid var(--signal-yellow); padding-left: 20px; opacity: 0; /* Fade in via JS */ }
+        .gallery-header { margin-bottom: 30px; border-left: 5px solid var(--signal-yellow); padding-left: 20px; opacity: 0; }
         .gallery-header h3 { font-size: 2rem; color: #fff; margin-bottom: 5px; }
         .gallery-header p { font-size: 1rem; color: #888; }
         
@@ -151,7 +156,7 @@
         
         .gallery-item { 
             position: relative; overflow: hidden; border-radius: 8px; border: 1px solid #333; height: 100%; min-height: 250px; 
-            opacity: 0; transform: translateY(30px); /* Posição inicial para animação */
+            opacity: 0; transform: translateY(30px);
         }
         .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .gallery-item:hover img { transform: scale(1.08); }
@@ -171,7 +176,7 @@
         .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 50px; }
         .price-card { 
             background: var(--concrete-gray); padding: 35px; border-radius: 12px; text-align: left; width: 100%; max-width: 350px; border: 1px solid #333; display: flex; flex-direction: column; 
-            opacity: 0; transform: translateY(50px); /* Animação */
+            opacity: 0; transform: translateY(50px);
         }
         .price-card.featured { border: 2px solid var(--signal-yellow); background: #181818; position: relative; transform: translateY(50px); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
         @media (max-width: 768px) { .price-card.featured { transform: translateY(50px); } }
@@ -194,7 +199,7 @@
     </a>
 
     <header>
-        <img src="Logo 1.png" alt="Ditos Painéis Logo" class="nav-logo">
+        <img src="logo.png" alt="Ditos Painéis Logo" class="nav-logo">
         <a href="#precos" style="color: var(--photon-white); text-decoration: none; font-weight: 600;">Ver Valores</a>
     </header>
 
