@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Outdoor em Pouso Alegre | Ditos Painéis - Rodovia JK</title>
-    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103) e Hipermercado Baronesa. Painel com LED Frontal.">
+    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103). Impacto visual garantido.">
     <meta property="og:title" content="Ditos Painéis - O Maior Impacto de Pouso Alegre">
     <meta property="og:description" content="Infraestrutura de visibilidade no Hub Industrial e Varejo. Veja valores e disponibilidade.">
     <meta property="og:image" content="rodovia-2.jpg">
@@ -31,8 +31,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* UX FIX: Scroll Padding para o header não tampar títulos */
         html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
 
         body {
@@ -96,7 +94,7 @@
         }
         .nav-logo { height: 35px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
         
-        /* Desktop Nav */
+        /* Nav */
         .nav-links { display: none; gap: 30px; align-items: center; }
         @media (min-width: 768px) { .nav-links { display: flex; } }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
@@ -104,21 +102,17 @@
         .cta-header { background: var(--signal-yellow); color: #000 !important; padding: 8px 18px; border-radius: 4px; }
         .cta-header:hover { background: #fff; }
 
-        /* Mobile Menu Button (Hamburger) */
+        /* Mobile Menu */
         .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 101; }
         @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
-
-        /* Mobile Menu Overlay */
         .mobile-menu-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--carbon-black);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 99;
-            transform: translateX(100%); transition: transform 0.4s ease-in-out;
+            z-index: 99; transform: translateX(100%); transition: transform 0.4s ease-in-out;
         }
         .mobile-menu-overlay.open { transform: translateX(0); }
         .mobile-menu-overlay a { color: #fff; font-size: 2rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
-        .mobile-menu-overlay a:hover { color: var(--signal-yellow); }
 
         /* Hero */
         .hero {
@@ -130,28 +124,18 @@
             background: linear-gradient(to bottom, rgba(17,17,17,0.75), rgba(17,17,17,0.4), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
             z-index: -1; will-change: transform;
         }
-        .hero h1 { 
-            font-size: clamp(2.2rem, 5vw, 4.5rem); 
-            max-width: 850px; color: #fff; margin-top: 60px;
-        }
-        .hero p { 
-            font-size: clamp(1rem, 1.5vw, 1.3rem); 
-            max-width: 600px; border-left: 4px solid var(--signal-yellow); 
-            padding-left: 20px; margin-bottom: 10px;
-        }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); max-width: 850px; color: #fff; margin-top: 60px; }
+        .hero p { font-size: clamp(1rem, 1.5vw, 1.3rem); max-width: 600px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; margin-bottom: 10px; }
 
         /* Scrollytelling */
         .scrolly-container { display: flex; flex-direction: column; position: relative; }
         @media (min-width: 768px) { .scrolly-container { flex-direction: row; } }
-        
         .visual-side {
             flex: 1; height: 100vh; position: sticky; top: 0;
-            background-image: url('mercado-1.jpg'); 
-            background-size: cover; background-position: center; display: none;
+            background-image: url('mercado-1.jpg'); background-size: cover; background-position: center; display: none;
             transition: background-image 0.5s ease-in-out;
         }
         @media (min-width: 768px) { .visual-side { display: block; } }
-
         .text-side { flex: 1; background: rgba(17,17,17,0.98); z-index: 2; }
         .step-card { 
             min-height: 85vh; display: flex; flex-direction: column; justify-content: center; padding: 40px 8%; 
@@ -173,31 +157,24 @@
         .gallery-header { margin-bottom: 40px; border-left: 4px solid var(--signal-yellow); padding-left: 25px; }
         .gallery-header h3 { font-size: clamp(1.8rem, 3vw, 2.2rem); color: #fff; margin-bottom: 10px; }
         .gallery-header p { font-size: 1.1rem; color: #999; max-width: 700px; }
-        
         .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 80px; }
         @media (min-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 280px); }
             .gallery-item.video-highlight { grid-column: span 2; grid-row: span 2; }
             .gallery-item.wide { grid-column: span 2; }
         }
-        
         .gallery-item { 
             position: relative; overflow: hidden; border-radius: 6px; border: 1px solid #222; height: 100%; min-height: 250px; 
             opacity: 0; transform: translateY(30px);
         }
         .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .gallery-item:hover img { transform: scale(1.05); }
-        
         .gallery-caption {
             position: absolute; bottom: 0; left: 0; width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.5) 70%, transparent 100%);
-            padding: 25px 20px; z-index: 5;
-            transform: translateY(0); transition: transform 0.4s ease-out;
+            padding: 25px 20px; z-index: 5; transform: translateY(0); transition: transform 0.4s ease-out;
         }
-        @media (min-width: 768px) {
-            .gallery-caption { transform: translateY(100%); }
-            .gallery-item:hover .gallery-caption { transform: translateY(0); }
-        }
+        @media (min-width: 768px) { .gallery-caption { transform: translateY(100%); } .gallery-item:hover .gallery-caption { transform: translateY(0); } }
         .gallery-caption h5 { color: var(--signal-yellow); font-size: 1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
         .gallery-caption p { color: #fff; font-size: 0.9rem; line-height: 1.4; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
         .video-tag { position: absolute; top: 20px; left: 20px; background: #cc0000; color: white; padding: 5px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 4px; z-index: 10; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -212,6 +189,25 @@
         .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 4px; font-size: 1.05rem; }
         .landmark-info small { color: #888; font-size: 0.9rem; line-height: 1.4; display: block; }
         .highlight-badge { background: rgba(255, 213, 0, 0.15); border: 1px solid var(--signal-yellow); color: var(--signal-yellow); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-weight: 700; text-transform: uppercase; vertical-align: middle; }
+
+        /* FAQ Section (NOVO) */
+        .faq-section { padding: 80px 5%; background-color: #1a1a1a; border-top: 1px solid #222; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-header { text-align: center; margin-bottom: 50px; }
+        .faq-header h2 { color: #fff; margin-bottom: 10px; }
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
+        .faq-question { 
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
+            font-size: 1.1rem; font-weight: 600; color: #ddd; transition: color 0.3s;
+        }
+        .faq-question:hover { color: var(--signal-yellow); }
+        .faq-answer { 
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
+            color: #999; line-height: 1.6; font-size: 0.95rem; padding-right: 20px;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
+        .faq-icon { transition: transform 0.3s; font-size: 1.5rem; color: var(--signal-yellow); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
 
         /* Preços */
         .pricing { padding: 100px 5%; background-color: var(--carbon-black); text-align: center; }
@@ -234,10 +230,8 @@
         .final-cta { text-align: center; margin-top: 100px; padding-bottom: 40px; opacity: 0.8; transition: opacity 0.3s; }
         .final-cta:hover { opacity: 1; }
         .final-cta a { color: var(--signal-yellow); text-decoration: none; border-bottom: 2px solid var(--signal-yellow); font-weight: 600; font-size: 1.2rem; padding-bottom: 2px; }
-        
         footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.85rem; background: #080808; line-height: 1.8; }
         footer a { color: var(--signal-yellow); text-decoration: none; transition: color 0.2s; }
-        footer a:hover { color: #fff; }
         .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
     </style>
 </head>
@@ -245,6 +239,7 @@
 
     <div id="mobileMenu" class="mobile-menu-overlay">
         <a href="#galeria" onclick="toggleMenu()">Galeria</a>
+        <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
         <a href="#mapa" onclick="toggleMenu()">Localização</a>
         <a href="#precos" onclick="toggleMenu()">Ver Valores</a>
         <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 1rem; color: #666; margin-top: 40px;">[ Fechar X ]</a>
@@ -256,16 +251,13 @@
 
     <header>
         <img src="logo.png" alt="Ditos Painéis Logo" class="nav-logo">
-        
         <nav class="nav-links">
             <a href="#galeria">Galeria</a>
+            <a href="#faq">Dúvidas</a>
             <a href="#mapa">Localização</a>
             <a href="#precos" class="cta-header">Ver Valores</a>
         </nav>
-
-        <div class="mobile-menu-btn" onclick="toggleMenu()">
-            ☰
-        </div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
     </header>
 
     <section class="hero">
@@ -305,7 +297,7 @@
     <section id="galeria" class="gallery-section">
         
         <div class="gallery-header">
-            <h3>Face B: Mercado Baronesa (Ponto de Conversão)</h3>
+            <h3>Face B: Mercado Baronesa</h3>
             <p>Influência no momento da compra. Audiência qualificada pronta para o consumo.</p>
         </div>
         <div class="gallery-grid">
@@ -321,62 +313,80 @@
             </div>
             <div class="gallery-item">
                 <img src="mercado-1.jpg" alt="Vista Mercado 1" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Audiência Qualificada</h5>
-                    <p>Famílias com poder de compra abastecendo no Hipermercado Baronesa.</p>
-                </div>
+                <div class="gallery-caption"><h5>Audiência Qualificada</h5><p>Famílias com poder de compra.</p></div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-2.jpg" alt="Vista Grade" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Visibilidade Inevitável</h5>
-                    <p>Estrutura posicionada acima da linha visual padrão, dominando o estacionamento.</p>
-                </div>
+                <div class="gallery-caption"><h5>Visibilidade Inevitável</h5><p>Estrutura acima da linha visual.</p></div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-3.jpg" alt="Close Painel" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Iluminação LED</h5>
-                    <p>Impacto garantido 24 horas por dia, mesmo durante o fluxo noturno.</p>
-                </div>
+                <div class="gallery-caption"><h5>Iluminação LED</h5><p>Impacto garantido 24 horas.</p></div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-4.jpg" alt="Vista Distante" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Frequência de Impacto</h5>
-                    <p>O morador local é impactado múltiplas vezes por semana, criando memória.</p>
-                </div>
+                <div class="gallery-caption"><h5>Frequência de Impacto</h5><p>Memória de marca constante.</p></div>
             </div>
         </div>
 
         <div class="gallery-header" style="margin-top: 80px;">
-            <h3>Face A: Rodovia (Hub de Negócios)</h3>
+            <h3>Face A: Rodovia (Hub B2B)</h3>
             <p>Posicionamento corporativo na BR-459. Projeta uma imagem de estabilidade.</p>
         </div>
         <div class="gallery-grid" style="margin-bottom: 0;">
             <div class="gallery-item wide">
                 <img src="rodovia-1.jpg" alt="Vista Rodovia" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Posicionamento Corporativo</h5>
-                    <p>O Km 103 consolidou-se como o endereço mais valioso do Sul de Minas.</p>
-                </div>
+                <div class="gallery-caption"><h5>Posicionamento Corporativo</h5><p>O endereço mais valioso do Sul de Minas.</p></div>
             </div>
             <div class="gallery-item wide">
                 <img src="rodovia-2.jpg" alt="Fluxo Intenso" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Solidez Financeira</h5>
-                    <p>Estar na rota de entrada projeta uma imagem de estabilidade única.</p>
-                </div>
+                <div class="gallery-caption"><h5>Solidez Financeira</h5><p>Imagem de estabilidade única.</p></div>
             </div>
             <div class="gallery-item wide">
                 <img src="rodovia-mapa.jpg" alt="Street View" loading="lazy">
-                <div class="gallery-caption">
-                    <h5>Employer Branding</h5>
-                    <p>O Outdoor atua como um farol para atrair talentos do polo industrial.</p>
-                </div>
+                <div class="gallery-caption"><h5>Employer Branding</h5><p>Farol para atrair talentos.</p></div>
             </div>
         </div>
 
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>Dúvidas Frequentes</h2>
+                <p>Transparência total antes de fechar.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Eu preciso fornecer a lona?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim. O valor da locação refere-se ao espaço de mídia. Porém, nós temos parceiros homologados que entregam a produção e instalação com preço de custo para nossos clientes. Cuidamos de toda a logística para você.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Tem contrato mínimo?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Temos flexibilidade. Você pode contratar desde uma Quinzena (Spot Rápido) até planos Semestrais. O plano Semestral oferece o maior desconto (30%) e garante que ninguém tome o seu ponto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Como funciona o pagamento?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Trabalhamos com faturamento direto para sua empresa (Boleto ou PIX), facilitando a aprovação no seu financeiro. O primeiro pagamento garante a reserva da data.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="mapa" class="map-section">
@@ -387,27 +397,9 @@
             <h3 style="font-size: 2rem; margin-bottom: 15px;">Raio de Influência</h3>
             <p style="font-size: 1rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
             <div class="landmark-list">
-                <div class="landmark-item">
-                    <div class="landmark-icon"></div> 
-                    <div class="landmark-info">
-                        <span>Outdoor Ditos</span>
-                        <small>Ponto Focal Km 103</small>
-                    </div>
-                </div>
-                <div class="landmark-item">
-                    <div class="landmark-icon" style="background-color: #fff;"></div>
-                    <div class="landmark-info">
-                        <span>Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span>
-                        <small>Conexão Anglo e Costela no Bafo.<br>Distância: Aprox. 400m.</small>
-                    </div>
-                </div>
-                <div class="landmark-item">
-                    <div class="landmark-icon" style="background-color: #555;"></div> 
-                    <div class="landmark-info">
-                        <span>Hipermercado Baronesa</span>
-                        <small>Vizinho de muro. Fluxo de compras.</small>
-                    </div>
-                </div>
+                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span><small>Conexão Anglo e Costela no Bafo.</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #555;"></div> <div class="landmark-info"><span>Hipermercado Baronesa</span><small>Vizinho de muro.</small></div></div>
             </div>
         </div>
     </section>
@@ -419,18 +411,18 @@
             <div class="price-card">
                 <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
                 <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Cotar</a>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
             <div class="price-card">
                 <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
                 <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Cotar</a>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
             <div class="price-card featured">
                 <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
                 <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
                 <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Garantir Desconto</a>
+                <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Reservar Spot</a>
             </div>
         </div>
 
@@ -455,12 +447,30 @@
     </footer>
 
     <script>
-        // Lógica Menu Mobile
+        // Menu Mobile
         function toggleMenu() {
             document.getElementById("mobileMenu").classList.toggle("open");
         }
 
-        // Animações GSAP
+        // FAQ Accordion
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Fecha todos
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-icon').innerText = '+';
+            });
+
+            // Abre o atual se não estava aberto
+            if (!isActive) {
+                item.classList.add('active');
+                element.querySelector('.faq-icon').innerText = '-';
+            }
+        }
+
+        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.to(".hero-bg", {
@@ -473,39 +483,24 @@
 
         gsap.utils.toArray('.step-card').forEach(step => {
             ScrollTrigger.create({
-                trigger: step,
-                start: "top 60%",
-                end: "top 30%",
+                trigger: step, start: "top 60%", end: "top 30%",
                 onEnter: () => step.classList.add('active'),
                 onLeaveBack: () => step.classList.remove('active')
             });
         });
 
         gsap.utils.toArray('.gallery-header').forEach(header => {
-            gsap.to(header, {
-                scrollTrigger: { trigger: header, start: "top 80%" },
-                opacity: 1, duration: 0.8
-            });
+            gsap.to(header, { scrollTrigger: { trigger: header, start: "top 80%" }, opacity: 1, duration: 0.8 });
         });
         
         let groups = document.querySelectorAll('.gallery-grid');
         groups.forEach(group => {
             let items = group.querySelectorAll('.gallery-item');
-            gsap.to(items, {
-                scrollTrigger: { trigger: group, start: "top 75%" },
-                opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)"
-            });
+            gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" });
         });
 
-        gsap.to(".landmark-item", {
-            scrollTrigger: { trigger: ".map-info", start: "top 70%" },
-            opacity: 1, x: 0, duration: 0.6, stagger: 0.2
-        });
-
-        gsap.to(".price-card", {
-            scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" },
-            opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out"
-        });
+        gsap.to(".landmark-item", { scrollTrigger: { trigger: ".map-info", start: "top 70%" }, opacity: 1, x: 0, duration: 0.6, stagger: 0.2 });
+        gsap.to(".price-card", { scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" });
     </script>
 </body>
 </html>
