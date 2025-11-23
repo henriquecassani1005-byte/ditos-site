@@ -15,23 +15,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* --- IDENTITY SYSTEM (REFINADO V16) --- */
+        /* --- IDENTITY SYSTEM --- */
         :root {
             --carbon-black: #111111;
             --photon-white: #F5F5F5;
             --signal-yellow: #FFD500;
-            --concrete-gray: #1f1f1f; /* Levemente mais escuro para contraste */
+            --concrete-gray: #1f1f1f;
             --whatsapp-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; font-size: 16px; } /* Base 16px */
+        
+        /* UX FIX: Scroll Padding para o header não tampar títulos */
+        html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
 
         body {
             background-color: var(--carbon-black);
@@ -41,7 +43,7 @@
             line-height: 1.6;
         }
 
-        /* Tipografia Ajustada */
+        /* Tipografia */
         h1 { font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1.5rem; }
         h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.2rem; }
         h3 { font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
@@ -49,12 +51,12 @@
         
         .text-highlight { color: var(--signal-yellow); }
 
-        /* Botões Refinados */
+        /* Botões */
         .btn {
             display: inline-block;
             background-color: var(--signal-yellow);
             color: var(--carbon-black);
-            padding: 16px 32px; /* Mais compacto */
+            padding: 16px 32px;
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
@@ -63,6 +65,7 @@
             letter-spacing: 0.5px;
             margin-top: 25px;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 213, 0, 0.25); }
 
@@ -88,11 +91,12 @@
         header {
             position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%;
             z-index: 100; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(17, 17, 17, 0.92); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px); transition: top 0.3s;
         }
-        .nav-logo { height: 32px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .nav-logo { height: 35px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
         
+        /* Desktop Nav */
         .nav-links { display: none; gap: 30px; align-items: center; }
         @media (min-width: 768px) { .nav-links { display: flex; } }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
@@ -100,7 +104,23 @@
         .cta-header { background: var(--signal-yellow); color: #000 !important; padding: 8px 18px; border-radius: 4px; }
         .cta-header:hover { background: #fff; }
 
-        /* Hero Otimizado */
+        /* Mobile Menu Button (Hamburger) */
+        .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 101; }
+        @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--carbon-black);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 99;
+            transform: translateX(100%); transition: transform 0.4s ease-in-out;
+        }
+        .mobile-menu-overlay.open { transform: translateX(0); }
+        .mobile-menu-overlay a { color: #fff; font-size: 2rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
+        .mobile-menu-overlay a:hover { color: var(--signal-yellow); }
+
+        /* Hero */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; 
             position: relative; overflow: hidden;
@@ -110,20 +130,17 @@
             background: linear-gradient(to bottom, rgba(17,17,17,0.75), rgba(17,17,17,0.4), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
             z-index: -1; will-change: transform;
         }
-        /* Ajuste de escala para Mobile vs Desktop */
         .hero h1 { 
-            font-size: clamp(2.2rem, 5vw, 4.5rem); /* Reduzido no mobile para não estourar */
-            max-width: 850px; color: #fff; 
+            font-size: clamp(2.2rem, 5vw, 4.5rem); 
+            max-width: 850px; color: #fff; margin-top: 60px;
         }
         .hero p { 
             font-size: clamp(1rem, 1.5vw, 1.3rem); 
-            max-width: 600px; 
-            border-left: 4px solid var(--signal-yellow); 
-            padding-left: 20px; 
-            margin-bottom: 10px;
+            max-width: 600px; border-left: 4px solid var(--signal-yellow); 
+            padding-left: 20px; margin-bottom: 10px;
         }
 
-        /* Scrollytelling (Leitura Confortável) */
+        /* Scrollytelling */
         .scrolly-container { display: flex; flex-direction: column; position: relative; }
         @media (min-width: 768px) { .scrolly-container { flex-direction: row; } }
         
@@ -142,10 +159,10 @@
         }
         .step-card.active { opacity: 1; }
         .step-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--signal-yellow); }
-        .step-card p { font-size: 1.1rem; max-width: 500px; line-height: 1.7; } /* Largura de leitura ideal */
+        .step-card p { font-size: 1.1rem; max-width: 500px; line-height: 1.7; }
 
         /* Specs */
-        .specs { padding: 80px 8%; display: flex; flex-wrap: wrap; gap: 40px; border-top: 1px solid #222; background-color: #111; }
+        .specs { padding: 80px 8%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid #222; background-color: #111; }
         .spec-item { flex: 1 1 220px; padding: 25px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
         .spec-item:hover { border-color: var(--signal-yellow); background: rgba(255,255,255,0.04); transform: translateY(-5px); }
         .spec-item h4 { color: var(--signal-yellow); margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
@@ -171,7 +188,6 @@
         .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .gallery-item:hover img { transform: scale(1.05); }
         
-        /* Legendas Melhoradas */
         .gallery-caption {
             position: absolute; bottom: 0; left: 0; width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.5) 70%, transparent 100%);
@@ -195,7 +211,6 @@
         .landmark-icon { width: 12px; height: 12px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 20px; margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 12px rgba(255, 213, 0, 0.4); }
         .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 4px; font-size: 1.05rem; }
         .landmark-info small { color: #888; font-size: 0.9rem; line-height: 1.4; display: block; }
-        
         .highlight-badge { background: rgba(255, 213, 0, 0.15); border: 1px solid var(--signal-yellow); color: var(--signal-yellow); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-weight: 700; text-transform: uppercase; vertical-align: middle; }
 
         /* Preços */
@@ -220,7 +235,7 @@
         .final-cta:hover { opacity: 1; }
         .final-cta a { color: var(--signal-yellow); text-decoration: none; border-bottom: 2px solid var(--signal-yellow); font-weight: 600; font-size: 1.2rem; padding-bottom: 2px; }
         
-        footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.9rem; background: #080808; line-height: 1.8; }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.85rem; background: #080808; line-height: 1.8; }
         footer a { color: var(--signal-yellow); text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #fff; }
         .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
@@ -228,17 +243,29 @@
 </head>
 <body>
 
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <a href="#galeria" onclick="toggleMenu()">Galeria</a>
+        <a href="#mapa" onclick="toggleMenu()">Localização</a>
+        <a href="#precos" onclick="toggleMenu()">Ver Valores</a>
+        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 1rem; color: #666; margin-top: 40px;">[ Fechar X ]</a>
+    </div>
+
     <a href="https://wa.me/5535999463566?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20outdoor%20Ditos%20Paineis." class="fab-whatsapp" target="_blank" title="Falar no WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-26.6l-6.7-4.2-69.8 18.3 18.6-68.1-4.4-6.9c-18.3-29.1-28-63.1-28-99.2 0-101.5 82.6-184.1 184.1-184.1 49.1 0 95.4 19.1 130.1 53.9 34.8 34.8 53.9 81.1 53.9 130.1-.1 101.5-82.6 184.1-184.1 184.1z"/></svg>
     </a>
 
     <header>
         <img src="logo.png" alt="Ditos Painéis Logo" class="nav-logo">
+        
         <nav class="nav-links">
             <a href="#galeria">Galeria</a>
             <a href="#mapa">Localização</a>
             <a href="#precos" class="cta-header">Ver Valores</a>
         </nav>
+
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            ☰
+        </div>
     </header>
 
     <section class="hero">
@@ -272,13 +299,13 @@
         <div class="spec-item"><h4>DIMENSÕES</h4> <p>9,00m x 3,00m</p></div>
         <div class="spec-item"><h4>ILUMINAÇÃO</h4> <p>LED Frontal</p></div>
         <div class="spec-item"><h4>TRÁFEGO</h4> <p>16.000 Veículos/Dia</p></div>
-        <div class="spec-item"><h4>LOCALIZAÇÃO</h4><p>Rod. JK - Km 103<br>Vila Beatriz</p></div>
+        <div class="spec-item"><h4>LOCALIZAÇÃO</h4><p>Rod. JK - Km 103<br>Vila Beatriz, Pouso Alegre - MG</p></div>
     </section>
 
     <section id="galeria" class="gallery-section">
         
         <div class="gallery-header">
-            <h3>Face B: Mercado Baronesa</h3>
+            <h3>Face B: Mercado Baronesa (Ponto de Conversão)</h3>
             <p>Influência no momento da compra. Audiência qualificada pronta para o consumo.</p>
         </div>
         <div class="gallery-grid">
@@ -296,34 +323,34 @@
                 <img src="mercado-1.jpg" alt="Vista Mercado 1" loading="lazy">
                 <div class="gallery-caption">
                     <h5>Audiência Qualificada</h5>
-                    <p>Famílias com poder de compra abastecendo no Hipermercado.</p>
+                    <p>Famílias com poder de compra abastecendo no Hipermercado Baronesa.</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-2.jpg" alt="Vista Grade" loading="lazy">
                 <div class="gallery-caption">
                     <h5>Visibilidade Inevitável</h5>
-                    <p>Estrutura posicionada acima da linha visual padrão.</p>
+                    <p>Estrutura posicionada acima da linha visual padrão, dominando o estacionamento.</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-3.jpg" alt="Close Painel" loading="lazy">
                 <div class="gallery-caption">
                     <h5>Iluminação LED</h5>
-                    <p>Impacto garantido 24 horas por dia.</p>
+                    <p>Impacto garantido 24 horas por dia, mesmo durante o fluxo noturno.</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="mercado-4.jpg" alt="Vista Distante" loading="lazy">
                 <div class="gallery-caption">
                     <h5>Frequência de Impacto</h5>
-                    <p>O morador local é impactado múltiplas vezes por semana.</p>
+                    <p>O morador local é impactado múltiplas vezes por semana, criando memória.</p>
                 </div>
             </div>
         </div>
 
-        <div class="gallery-header" style="margin-top: 100px;">
-            <h3>Face A: Rodovia (Hub B2B)</h3>
+        <div class="gallery-header" style="margin-top: 80px;">
+            <h3>Face A: Rodovia (Hub de Negócios)</h3>
             <p>Posicionamento corporativo na BR-459. Projeta uma imagem de estabilidade.</p>
         </div>
         <div class="gallery-grid" style="margin-bottom: 0;">
@@ -401,7 +428,7 @@
             </div>
             <div class="price-card featured">
                 <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
-                <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Economia total brutal</p>
+                <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
                 <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Garantir Desconto</a>
             </div>
@@ -428,6 +455,12 @@
     </footer>
 
     <script>
+        // Lógica Menu Mobile
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("open");
+        }
+
+        // Animações GSAP
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.to(".hero-bg", {
