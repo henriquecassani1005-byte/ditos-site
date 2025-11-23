@@ -102,7 +102,7 @@
         .cta-header { background: var(--signal-yellow); color: #000 !important; padding: 8px 18px; border-radius: 4px; }
         .cta-header:hover { background: #fff; }
 
-        /* Mobile Menu */
+        /* Mobile Menu & Controls */
         .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 101; }
         @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
         
@@ -192,14 +192,24 @@
         .map-section { display: flex; flex-wrap: wrap; background-color: #161616; }
         .map-container { flex: 2; min-width: 300px; height: 600px; position: relative; filter: none; }
         .map-info { flex: 1; min-width: 300px; padding: 60px 40px; display: flex; flex-direction: column; justify-content: center; background: #1a1a1a; border-left: 1px solid #222; }
+        
         .landmark-list { margin-top: 30px; }
-        .landmark-item { display: flex; align-items: flex-start; margin-bottom: 30px; opacity: 0; transform: translateX(-20px); }
-        .landmark-icon { width: 12px; height: 12px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 20px; margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 12px rgba(255, 213, 0, 0.4); }
-        .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 4px; font-size: 1.05rem; }
-        .landmark-info small { color: #888; font-size: 0.9rem; line-height: 1.4; display: block; }
+        .landmark-item { display: flex; align-items: flex-start; margin-bottom: 25px; opacity: 0; transform: translateX(-20px); }
+        .landmark-icon { width: 12px; height: 12px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 15px; margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 12px rgba(255, 213, 0, 0.4); }
+        .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 2px; font-size: 1rem; }
+        .landmark-info small { color: #888; font-size: 0.85rem; line-height: 1.4; display: block; }
+        
+        /* Lista de Empresas */
+        .companies-list { list-style: none; padding: 0; margin-top: 5px; }
+        .companies-list li { 
+            color: #aaa; font-size: 0.85rem; margin-bottom: 6px; 
+            display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px;
+        }
+        .companies-list li strong { color: #ddd; font-weight: 500; }
+
         .highlight-badge { background: rgba(255, 213, 0, 0.15); border: 1px solid var(--signal-yellow); color: var(--signal-yellow); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-weight: 700; text-transform: uppercase; vertical-align: middle; }
 
-        /* Preços com Ancoragem */
+        /* Preços */
         .pricing { padding: 100px 5%; background-color: var(--carbon-black); text-align: center; }
         .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 60px; }
         .price-card { 
@@ -211,7 +221,7 @@
         @media (max-width: 768px) { .price-card.featured { transform: translateY(50px); z-index: 1; } }
         .price-card.featured::before { content: 'MAIS VENDIDO'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--signal-yellow); color: #000; padding: 5px 15px; font-size: 0.75rem; font-weight: 800; border-radius: 20px; letter-spacing: 0.5px; }
         .price-value { font-size: 2.5rem; font-weight: 900; margin: 15px 0 5px; color: #fff; letter-spacing: -1px; }
-        .price-period { font-size: 0.9rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .price-period { font-size: 0.9rem; color: #777; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .price-features { margin-bottom: 30px; flex-grow: 1; }
         .price-features li { list-style: none; margin-bottom: 12px; padding-left: 28px; position: relative; font-size: 1rem; color: #ccc; }
         .price-features li::before { content: '✓'; color: var(--signal-yellow); position: absolute; left: 0; font-weight: 900; font-size: 1.1rem; }
@@ -368,12 +378,37 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d923.25123456789!2d-45.9135588!3d-22.220041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzEyLjIiUyA0NcKwNTQnNDguOCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="map-info">
-            <h3 style="font-size: 2rem; margin-bottom: 15px;">Pontos Próximos Relevantes</h3>
+            <h3 style="font-size: 2rem; margin-bottom: 15px;">Pontos Relevantes Próximos</h3>
             <p style="font-size: 1rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
+            
             <div class="landmark-list">
-                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
-                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span><small>Conexão Anglo e Costela no Bafo.</small></div></div>
-                <div class="landmark-item"><div class="landmark-icon" style="background-color: #555;"></div> <div class="landmark-info"><span>Hipermercado Baronesa</span><small>Vizinho de muro.</small></div></div>
+                <div class="landmark-item">
+                    <div class="landmark-icon"></div> 
+                    <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div>
+                </div>
+                
+                <div class="landmark-item">
+                    <div class="landmark-icon" style="background-color: #fff;"></div> 
+                    <div class="landmark-info">
+                        <span>Vizinhança</span>
+                        <small>Hipermercado Baronesa e Construarte (Vizinhos de Muro).</small>
+                    </div>
+                </div>
+
+                <div class="landmark-item">
+                    <div class="landmark-icon" style="background-color: #555;"></div> 
+                    <div class="landmark-info" style="width: 100%;">
+                        <span>Empresas Próximas</span>
+                        <ul class="companies-list">
+                            <li>Volkswagen <strong>400m</strong></li>
+                            <li>Skyfit <strong>400m</strong></li>
+                            <li>Hotel Marques Plaza <strong>500m</strong></li>
+                            <li>Colégio Anglo <strong>500m</strong></li>
+                            <li>Mart Minas Atacado <strong>500m</strong></li>
+                            <li>Costela no Bafo <strong>850m</strong></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -383,59 +418,37 @@
         <p style="color: #aaa; margin-bottom: 40px;">Investimento para dominar a Rodovia JK.</p>
         
         <div class="pricing-grid">
-            
             <div class="price-card">
-                <h3>Quinzena</h3> 
-                <p class="price-period">Spot Rápido (15 Dias)</p> 
-                <div class="price-value">R$ 1.500</div>
+                <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
                 
                 <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #ddd; border-left: 3px solid #666;">
-                    <strong>Custo por Pessoa:</strong> R$ 0,002.<br>
-                    Mais barato que um panfleto.
+                    <strong>Custo por Pessoa:</strong> R$ 0,002.<br>Mais barato que um panfleto.
                 </div>
 
-                <ul class="price-features"> 
-                    <li>Promoções Relâmpago</li> 
-                    <li>Datas Comemorativas</li> 
-                    <li>Entrada Imediata</li> 
-                </ul>
+                <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
 
             <div class="price-card">
-                <h3>Mensal</h3> 
-                <p class="price-period">30 Dias de Exposição</p> 
-                <div class="price-value">R$ 2.500</div>
+                <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
                 
                 <div style="background: rgba(37, 211, 102, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--whatsapp-green);">
-                    Google Ads: R$ 2,00 por <strong>1 Clique</strong>.<br>
-                    Ditos: R$ 2,00 por <strong>1.000 Pessoas</strong>.
+                    Google Ads: R$ 2,00 por <strong>1 Clique</strong>.<br>Ditos: R$ 2,00 por <strong>1.000 Pessoas</strong>.
                 </div>
 
-                <ul class="price-features"> 
-                    <li>Branding e Fixação</li> 
-                    <li>Ciclo completo de vendas</li> 
-                    <li>Impacto contínuo</li> 
-                </ul>
+                <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
 
             <div class="price-card featured">
-                <h3>Semestral</h3> 
-                <p class="price-period">Valor Mensal (Contrato 6 meses)</p> 
-                <div class="price-value text-highlight">R$ 1.750</div>
+                <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
                 
                 <div style="background: rgba(255, 213, 0, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--signal-yellow);">
-                    <strong>CPM: R$ 1,45.</strong><br>
-                    O menor custo por mil visualizações da história de Pouso Alegre.
+                    <strong>CPM: R$ 1,45.</strong><br>O menor custo por mil visualizações da história de Pouso Alegre.
                 </div>
 
                 <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
-                <ul class="price-features"> 
-                    <li><strong>30% de Desconto</strong></li> 
-                    <li>Domínio Territorial</li> 
-                    <li>Preferência de Renovação</li> 
-                </ul>
+                <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Reservar Espaço</a>
             </div>
         </div>
