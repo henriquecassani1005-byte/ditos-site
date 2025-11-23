@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Outdoor em Pouso Alegre | Ditos Painéis - Rodovia JK</title>
-    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103). Impacto visual garantido.">
+    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103) e Hipermercado Baronesa. Painel com LED Frontal.">
     <meta property="og:title" content="Ditos Painéis - O Maior Impacto de Pouso Alegre">
     <meta property="og:description" content="Infraestrutura de visibilidade no Hub Industrial e Varejo. Veja valores e disponibilidade.">
     <meta property="og:image" content="rodovia-2.jpg">
@@ -190,25 +190,6 @@
         .landmark-info small { color: #888; font-size: 0.9rem; line-height: 1.4; display: block; }
         .highlight-badge { background: rgba(255, 213, 0, 0.15); border: 1px solid var(--signal-yellow); color: var(--signal-yellow); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 10px; font-weight: 700; text-transform: uppercase; vertical-align: middle; }
 
-        /* FAQ Section (NOVO) */
-        .faq-section { padding: 80px 5%; background-color: #1a1a1a; border-top: 1px solid #222; }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-header { text-align: center; margin-bottom: 50px; }
-        .faq-header h2 { color: #fff; margin-bottom: 10px; }
-        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
-        .faq-question { 
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
-            font-size: 1.1rem; font-weight: 600; color: #ddd; transition: color 0.3s;
-        }
-        .faq-question:hover { color: var(--signal-yellow); }
-        .faq-answer { 
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
-            color: #999; line-height: 1.6; font-size: 0.95rem; padding-right: 20px;
-        }
-        .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
-        .faq-icon { transition: transform 0.3s; font-size: 1.5rem; color: var(--signal-yellow); }
-        .faq-item.active .faq-icon { transform: rotate(45deg); }
-
         /* Preços */
         .pricing { padding: 100px 5%; background-color: var(--carbon-black); text-align: center; }
         .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 60px; }
@@ -226,10 +207,30 @@
         .price-features li { list-style: none; margin-bottom: 12px; padding-left: 28px; position: relative; font-size: 1rem; color: #ccc; }
         .price-features li::before { content: '✓'; color: var(--signal-yellow); position: absolute; left: 0; font-weight: 900; font-size: 1.1rem; }
 
-        /* Footer */
+        /* Ultimato e Footer */
         .final-cta { text-align: center; margin-top: 100px; padding-bottom: 40px; opacity: 0.8; transition: opacity 0.3s; }
         .final-cta:hover { opacity: 1; }
         .final-cta a { color: var(--signal-yellow); text-decoration: none; border-bottom: 2px solid var(--signal-yellow); font-weight: 600; font-size: 1.2rem; padding-bottom: 2px; }
+        
+        /* FAQ Section */
+        .faq-section { padding: 80px 5%; background-color: #111; border-top: 1px solid #222; margin-bottom: 0; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-header { text-align: center; margin-bottom: 50px; }
+        .faq-header h2 { color: #fff; margin-bottom: 10px; }
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; }
+        .faq-question { 
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
+            font-size: 1.1rem; font-weight: 600; color: #ddd; transition: color 0.3s;
+        }
+        .faq-question:hover { color: var(--signal-yellow); }
+        .faq-answer { 
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; 
+            color: #999; line-height: 1.6; font-size: 0.95rem; padding-right: 20px;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
+        .faq-icon { transition: transform 0.3s; font-size: 1.5rem; color: var(--signal-yellow); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
         footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.85rem; background: #080808; line-height: 1.8; }
         footer a { color: var(--signal-yellow); text-decoration: none; transition: color 0.2s; }
         .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
@@ -239,9 +240,9 @@
 
     <div id="mobileMenu" class="mobile-menu-overlay">
         <a href="#galeria" onclick="toggleMenu()">Galeria</a>
-        <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
         <a href="#mapa" onclick="toggleMenu()">Localização</a>
         <a href="#precos" onclick="toggleMenu()">Ver Valores</a>
+        <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
         <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 1rem; color: #666; margin-top: 40px;">[ Fechar X ]</a>
     </div>
 
@@ -253,8 +254,8 @@
         <img src="logo.png" alt="Ditos Painéis Logo" class="nav-logo">
         <nav class="nav-links">
             <a href="#galeria">Galeria</a>
-            <a href="#faq">Dúvidas</a>
             <a href="#mapa">Localização</a>
+            <a href="#faq">Dúvidas</a>
             <a href="#precos" class="cta-header">Ver Valores</a>
         </nav>
         <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
@@ -350,6 +351,49 @@
 
     </section>
 
+    <section id="mapa" class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d923.25123456789!2d-45.9135588!3d-22.220041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzEyLjIiUyA0NcKwNTQnNDguOCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-info">
+            <h3 style="font-size: 2rem; margin-bottom: 15px;">Raio de Influência</h3>
+            <p style="font-size: 1rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
+            <div class="landmark-list">
+                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span><small>Conexão Anglo e Costela no Bafo.</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #555;"></div> <div class="landmark-info"><span>Hipermercado Baronesa</span><small>Vizinho de muro.</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precos" class="pricing">
+        <h2 style="color: #fff; margin-bottom: 15px;">Domínio da Paisagem</h2>
+        <p style="color: #aaa; margin-bottom: 40px;">Investimento para dominar a Rodovia JK.</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
+                <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
+            </div>
+            <div class="price-card">
+                <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
+                <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
+                <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
+                <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Reservar Espaço</a>
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <p style="color: #888; margin-bottom: 15px;">Ainda com dúvida? Fale com o especialista.</p>
+            <a href="https://wa.me/5535999463566?text=Tenho%20uma%20d%C3%BAvida%20sobre%20o%20painel">Conversar sem compromisso →</a>
+        </div>
+    </section>
+
     <section id="faq" class="faq-section">
         <div class="faq-container">
             <div class="faq-header">
@@ -389,49 +433,6 @@
         </div>
     </section>
 
-    <section id="mapa" class="map-section">
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d923.25123456789!2d-45.9135588!3d-22.220041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzEyLjIiUyA0NcKwNTQnNDguOCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-info">
-            <h3 style="font-size: 2rem; margin-bottom: 15px;">Raio de Influência</h3>
-            <p style="font-size: 1rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
-            <div class="landmark-list">
-                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
-                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Corredor Premium <span class="highlight-badge">Fluxo VIP</span></span><small>Conexão Anglo e Costela no Bafo.</small></div></div>
-                <div class="landmark-item"><div class="landmark-icon" style="background-color: #555;"></div> <div class="landmark-info"><span>Hipermercado Baronesa</span><small>Vizinho de muro.</small></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="precos" class="pricing">
-        <h2 style="color: #fff; margin-bottom: 15px;">Domínio da Paisagem</h2>
-        <p style="color: #aaa; margin-bottom: 40px;">Investimento para dominar a Rodovia JK.</p>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
-                <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
-            </div>
-            <div class="price-card">
-                <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
-                <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
-            </div>
-            <div class="price-card featured">
-                <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
-                <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
-                <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
-                <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Reservar Spot</a>
-            </div>
-        </div>
-
-        <div class="final-cta">
-            <p style="color: #888; margin-bottom: 15px;">Ainda com dúvida? Fale com o especialista.</p>
-            <a href="https://wa.me/5535999463566?text=Tenho%20uma%20d%C3%BAvida%20sobre%20o%20painel">Conversar sem compromisso →</a>
-        </div>
-    </section>
-
     <footer>
         <p><strong>Ditos Painéis & Gestão OOH</strong><br>
         Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>
@@ -447,30 +448,23 @@
     </footer>
 
     <script>
-        // Menu Mobile
         function toggleMenu() {
             document.getElementById("mobileMenu").classList.toggle("open");
         }
 
-        // FAQ Accordion
         function toggleFAQ(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
-            
-            // Fecha todos
             document.querySelectorAll('.faq-item').forEach(i => {
                 i.classList.remove('active');
                 i.querySelector('.faq-icon').innerText = '+';
             });
-
-            // Abre o atual se não estava aberto
             if (!isActive) {
                 item.classList.add('active');
                 element.querySelector('.faq-icon').innerText = '-';
             }
         }
 
-        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.to(".hero-bg", {
