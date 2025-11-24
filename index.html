@@ -6,11 +6,7 @@
     
     <title>Outdoor em Pouso Alegre | Ditos Painéis - Rodovia JK</title>
     <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103). Impacto visual de 40k+ pessoas/dia.">
-    <meta property="og:title" content="Ditos Painéis - Autoridade em OOH">
-    <meta property="og:description" content="Infraestrutura de visibilidade na Entrada da Cidade. Veja dados de alcance e disponibilidade.">
-    <meta property="og:image" content="rodovia-2.jpg">
-    <meta property="og:type" content="website">
-
+    
     <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,16 +60,20 @@
             border-radius: 4px;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            margin-top: 30px;
             transition: all 0.3s ease;
             border: 1px solid var(--signal-yellow);
             cursor: pointer;
         }
         .btn:hover { background-color: transparent; color: var(--signal-yellow); box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
-        .btn-pulse-yellow { animation: pulse-yellow-anim 2s infinite; }
-        @keyframes pulse-yellow-anim { 0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); } }
 
-        /* FAB */
+        .btn-pulse-yellow { animation: pulse-yellow-anim 2s infinite; }
+        @keyframes pulse-yellow-anim {
+            0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); }
+        }
+
+        /* FAB WhatsApp */
         .fab-whatsapp {
             position: fixed; bottom: 30px; right: 30px;
             background-color: var(--whatsapp-green); color: white;
@@ -128,19 +128,29 @@
         .scroll-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 2rem; animation: bounce 2s infinite; opacity: 0.7; z-index: 5; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
 
-        /* Stats */
-        .stats-section { padding: 40px 5%; background: #111; border-bottom: 1px solid #222; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center; position: relative; z-index: 5; }
+        /* Stats Bar */
+        .stats-section {
+            padding: 40px 5%; background: #111; border-bottom: 1px solid #222;
+            display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center; position: relative; z-index: 5;
+        }
         .stat-item { flex: 1 1 150px; }
         .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: var(--photon-white); line-height: 1; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
         .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--signal-yellow); font-weight: 600; }
 
-        /* Scrollytelling */
+        /* Scrollytelling (Dados Brutais) */
         .scrolly-container { display: flex; flex-direction: column; position: relative; }
         @media (min-width: 768px) { .scrolly-container { flex-direction: row; } }
-        .visual-side { flex: 1; height: 100vh; position: sticky; top: 0; background-image: url('mercado-1.jpg'); background-size: cover; background-position: center; display: none; transition: background-image 0.5s ease-in-out; }
+        .visual-side {
+            flex: 1; height: 100vh; position: sticky; top: 0;
+            background-image: url('mercado-1.jpg'); background-size: cover; background-position: center; display: none;
+            transition: background-image 0.5s ease-in-out;
+        }
         @media (min-width: 768px) { .visual-side { display: block; } }
         .text-side { flex: 1; background: rgba(10,10,10,0.97); z-index: 2; }
-        .step-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 8%; border-left: 1px solid rgba(255,255,255,0.05); opacity: 0.2; transition: opacity 0.6s; }
+        .step-card { 
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 8%; 
+            border-left: 1px solid rgba(255,255,255,0.05); opacity: 0.2; transition: opacity 0.6s;
+        }
         .step-card.active { opacity: 1; }
         .step-card h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: #fff; border-bottom: 2px solid var(--signal-yellow); display: inline-block; padding-bottom: 5px; }
         .step-card p { font-size: 1.1rem; max-width: 550px; line-height: 1.6; margin-top: 15px; }
@@ -167,6 +177,7 @@
         .gallery-header { border-left: 4px solid var(--signal-yellow); padding-left: 20px; }
         .gallery-header h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: #fff; margin-bottom: 5px; }
         .gallery-header p { font-size: 1rem; color: #888; max-width: 600px; }
+        
         .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 80px; }
         @media (min-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 300px); }
@@ -206,78 +217,71 @@
         .companies-list { list-style: none; padding: 0; margin-top: 5px; }
         .companies-list li { color: #aaa; font-size: 0.85rem; margin-bottom: 5px; display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
 
-        /* --- MOCKUPS COM EFEITO FLIP (RESTAURADO & CORRIGIDO) --- */
-        .mockup-section { padding: 80px 5%; background-color: #0e0e0e; border-top: 1px solid #222; }
-        .mockup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        
-        /* Container do Flip */
-        .mockup-card-flip {
-            background-color: transparent;
-            width: 100%;
-            aspect-ratio: 16/9;
-            perspective: 1000px; /* Profundidade 3D Essencial */
-            cursor: pointer;
-        }
-
-        /* O Objeto que gira */
-        .mockup-inner {
+        /* --- SCROLLYTELLING MOCKUPS (NOVA SEÇÃO) --- */
+        .transform-section {
+            padding: 0; /* Full screen */
+            background-color: #0a0a0a;
             position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d; /* Mantém os filhos em 3D */
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border-top: 1px solid #222;
         }
 
-        /* Ação de Girar */
-        .mockup-card-flip.flipped .mockup-inner {
-            transform: rotateY(180deg);
+        .transform-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
+        @media (min-width: 768px) { .transform-container { flex-direction: row; } }
 
-        /* Faces da Carta */
-        .mockup-front, .mockup-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden; /* Esconde o verso */
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #333;
-            background-color: #111;
-        }
-
-        /* Frente (Outdoor Vazio) */
-        .mockup-front {
+        /* Texto que rola (Esquerda) */
+        .transform-content {
+            flex: 1;
+            padding: 80px 5%;
             z-index: 2;
-            transform: rotateY(0deg);
+            background: linear-gradient(to right, rgba(10,10,10,0.95), rgba(10,10,10,0));
+        }
+        @media (min-width: 768px) { .transform-content { max-width: 40%; background: transparent; } }
+
+        .transform-header-static {
+            margin-bottom: 40px;
+            border-left: 4px solid var(--signal-yellow);
+            padding-left: 20px;
+        }
+        .transform-header-static h3 { font-size: 2rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+        
+        .transform-step {
+            min-height: 80vh; /* Altura para garantir scroll */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0.3;
+            transition: opacity 0.5s;
+        }
+        .transform-step.active { opacity: 1; }
+        
+        .transform-step h4 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--signal-yellow); margin-bottom: 10px; }
+        .transform-step p { font-size: 1.1rem; max-width: 400px; }
+
+        /* Imagem Fixa (Direita) */
+        .transform-visual {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+        @media (min-width: 768px) { .transform-visual { left: 40%; width: 60%; } }
+
+        .transform-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1.5s ease;
+            transform: scale(1.1);
         }
         
-        /* Verso (Mockup) */
-        .mockup-back {
-            transform: rotateY(180deg);
-        }
-
-        .mockup-front img, .mockup-back img { width: 100%; height: 100%; object-fit: cover; }
-
-        .mockup-label { 
-            position: absolute; top: 10px; left: 10px; z-index: 10; 
-            background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; font-size: 0.7rem; 
-            font-weight: 700; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #444; 
-        }
-        
-        .click-instruction { 
-            position: absolute; bottom: 10px; right: 10px; z-index: 10; 
-            color: var(--signal-yellow); font-size: 0.75rem; font-weight: 600; 
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8); pointer-events: none; 
-            text-transform: uppercase; animation: pulse-text 2s infinite; 
-        }
-        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .transform-img.active { opacity: 1; transform: scale(1); }
 
 
-        /* Calculadora */
+        /* Calculadora ROI */
         .calculator-section { padding: 80px 5%; background-color: #121212; border-top: 1px solid #333; }
         .calc-wrapper { max-width: 900px; margin: 0 auto; background: #1a1a1a; border-radius: 8px; padding: 30px; border: 1px solid #333; display: flex; flex-wrap: wrap; gap: 30px; }
         .calc-input, .calc-result { flex: 1; min-width: 280px; }
@@ -354,7 +358,11 @@
         <div class="hero-content">
             <h1>Infraestrutura de Visibilidade na Entrada da Cidade.</h1>
             <p>Operamos exclusivamente na Rodovia JK, Km 103, o epicentro do desenvolvimento econômico de Pouso Alegre. Somos o elo físico entre sua marca e o mercado.</p>
-            <div class="hero-cta-wrapper"><a href="#precos" class="btn">Ver Disponibilidade</a></div>
+            
+            <div class="hero-cta-wrapper">
+                <a href="#precos" class="btn">Ver Disponibilidade</a>
+            </div>
+
             <div class="scroll-indicator">↓</div>
         </div>
     </section>
@@ -368,9 +376,18 @@
     <main class="scrolly-container">
         <div class="visual-side"></div>
         <div class="text-side">
-            <div class="step-card"><h2>Contra fatos não há algoritmo.</h2><p>O marketing digital mente. O asfalto não. Enquanto você briga por 3 segundos de atenção no celular, nós entregamos a única audiência que não pode ser desligada.</p></div>
-            <div class="step-card"><h2>40.000 Pessoas/Dia.</h2><p>Custo Zero por Clique. Não são impressões fantasmas. O outdoor não cobra CPC. Se passarem 10 ou 100 mil pessoas, seu custo é fixo.</p></div>
-            <div class="step-card"><h2>A Regra da Solidez.</h2><p>Empresas de "fundo de quintal" não anunciam em outdoor. Estar aqui prova, instantaneamente, que você tem capital e estrutura.</p></div>
+            <div class="step-card">
+                <h2>Contra fatos não há algoritmo.</h2>
+                <p>O marketing digital mente. O asfalto não. Enquanto você briga por 3 segundos de atenção no celular, nós entregamos a única audiência que não pode ser desligada.</p>
+            </div>
+            <div class="step-card">
+                <h2>40.000 Pessoas/Dia.</h2>
+                <p>Custo Zero por Clique. Não são impressões fantasmas. O outdoor não cobra CPC. Se passarem 10 ou 100 mil pessoas, seu custo é fixo. Quanto mais gente vê, mais barato fica.</p>
+            </div>
+            <div class="step-card">
+                <h2>A Regra da Solidez.</h2>
+                <p>Empresas de "fundo de quintal" não anunciam em outdoor. Estar aqui prova, instantaneamente, que você tem capital e estrutura.</p>
+            </div>
         </div>
     </main>
 
@@ -386,10 +403,13 @@
             <div class="gallery-header"><h3>Lado: Mercado Baronesa</h3><p>Influência no momento da compra.</p></div>
             <div class="theme-switch-wrapper"><span style="margin-right: 10px;">☀️ Dia</span><label class="theme-switch" for="checkbox"><input type="checkbox" id="checkbox" onchange="toggleNightMode()"><div class="slider round"></div></label><span style="margin-left: 10px;">🌙 Noite</span></div>
         </div>
+
         <div class="gallery-grid">
             <div class="gallery-item video-highlight">
                 <span class="video-tag">FLUXO REAL</span>
-                <video controls poster="mercado-1.jpg" muted loop autoplay playsinline><source src="video-estacionamento.mp4" type="video/mp4"></video>
+                <video controls poster="mercado-1.jpg" muted loop autoplay playsinline>
+                    <source src="video-estacionamento.mp4" type="video/mp4">
+                </video>
                 <div class="gallery-caption"><h5>Influência na Compra</h5><p>Capturamos a atenção do consumidor.</p></div>
             </div>
             <div class="gallery-item"><img src="mercado-1.jpg" data-day="mercado-1.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Mercado" loading="lazy"><div class="gallery-caption"><h5>Audiência Qualificada</h5><p>Famílias com poder de compra.</p></div></div>
@@ -397,6 +417,7 @@
             <div class="gallery-item"><img src="mercado-3.jpg" data-day="mercado-3.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Painel" loading="lazy"><div class="gallery-caption"><h5>Iluminação LED</h5><p>Impacto garantido 24 horas.</p></div></div>
             <div class="gallery-item"><img src="mercado-4.jpg" data-day="mercado-4.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Longe" loading="lazy"><div class="gallery-caption"><h5>Frequência de Impacto</h5><p>Memória de marca constante.</p></div></div>
         </div>
+
         <div class="gallery-header" style="margin-top: 100px;"><h3>Lado: Rodovia</h3><p>Posicionamento corporativo na BR-459.</p></div>
         <div class="gallery-grid" style="margin-bottom: 0;">
             <div class="gallery-item wide"><img src="rodovia-1.jpg" data-day="rodovia-1.jpg" data-night="https://placehold.co/800x400/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Rodovia" loading="lazy"><div class="gallery-caption"><h5>Posicionamento Corporativo</h5><p>Endereço valioso.</p></div></div>
@@ -441,59 +462,48 @@
         </div>
     </section>
 
-    <section id="mockups" class="mockup-section">
-        <div class="gallery-header">
-            <h3>O Poder da Transformação</h3>
-            <p>Visualize o impacto da sua marca dominando a paisagem.</p>
-        </div>
-        <div class="mockup-grid">
-            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
-                <div class="mockup-inner">
-                    <div class="mockup-front">
-                        <span class="mockup-label">Automotivo</span>
-                        <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
+    <section class="transform-section">
+        <div class="transform-container">
+            <div class="transform-content">
+                <div class="transform-header-static">
+                    <h3>O Poder da Transformação</h3>
+                    <p style="color: #888; margin-top: 10px;">Role para visualizar sua marca dominando a paisagem.</p>
+                </div>
+                
+                <div class="transform-text-side">
+                    <div class="transform-step active" data-index="0">
+                        <h4>O Cenário Real</h4>
+                        <p>Este é o seu palco. 9x3 metros de oportunidade na entrada da cidade, pronto para receber sua mensagem.</p>
                     </div>
-                    <div class="mockup-back">
-                        <img src="mockup-carro.jpg" alt="Mockup Carro">
+                    
+                    <div class="transform-step" data-index="1">
+                        <h4>Setor Automotivo</h4>
+                        <p>Imagine o lançamento do seu novo modelo impactando 40.000 motoristas todos os dias.</p>
+                    </div>
+                    
+                    <div class="transform-step" data-index="2">
+                        <h4>Saúde & Fitness</h4>
+                        <p>A motivação que seus alunos precisam, exatamente no caminho para o treino.</p>
+                    </div>
+
+                    <div class="transform-step" data-index="3">
+                        <h4>Imobiliário</h4>
+                        <p>Venda o sonho da casa própria para famílias com alto poder de compra que frequentam o Baronesa.</p>
+                    </div>
+
+                    <div class="transform-step" data-index="4">
+                        <h4>Educação</h4>
+                        <p>Campanhas de matrícula e vestibular com visibilidade máxima para estudantes e pais.</p>
                     </div>
                 </div>
             </div>
-            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
-                <div class="mockup-inner">
-                    <div class="mockup-front">
-                        <span class="mockup-label">Fitness</span>
-                        <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
-                    </div>
-                    <div class="mockup-back">
-                        <img src="mockup-gym.jpg" alt="Mockup Academia">
-                    </div>
-                </div>
-            </div>
-            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
-                <div class="mockup-inner">
-                    <div class="mockup-front">
-                        <span class="mockup-label">Imobiliária</span>
-                        <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
-                    </div>
-                    <div class="mockup-back">
-                        <img src="mockup-imob.jpg" alt="Mockup Imob">
-                    </div>
-                </div>
-            </div>
-            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
-                <div class="mockup-inner">
-                    <div class="mockup-front">
-                        <span class="mockup-label">Educação</span>
-                        <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
-                    </div>
-                    <div class="mockup-back">
-                        <img src="mockup-uni.jpg" alt="Mockup Faculdade">
-                    </div>
-                </div>
+
+            <div class="transform-visual">
+                <img src="mercado-3.jpg" class="transform-img active" id="mockup-0">
+                <img src="mockup-carro.jpg" class="transform-img" id="mockup-1">
+                <img src="mockup-gym.jpg" class="transform-img" id="mockup-2">
+                <img src="mockup-imob.jpg" class="transform-img" id="mockup-3">
+                <img src="mockup-uni.jpg" class="transform-img" id="mockup-4">
             </div>
         </div>
     </section>
@@ -572,6 +582,7 @@
             document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-icon').innerText = '+'; });
             if (!isActive) { item.classList.add('active'); element.querySelector('.faq-icon').innerText = '-'; }
         }
+
         function toggleNightMode() {
             document.body.classList.toggle('night-active');
             const images = document.querySelectorAll('.gallery-item img');
@@ -583,6 +594,7 @@
                 }
             });
         }
+
         function updateCalc() {
             const cpm = document.getElementById('digitalCpm').value;
             document.getElementById('cpmValue').innerText = 'R$ ' + cpm + ',00';
@@ -594,16 +606,48 @@
         updateCalc();
 
         gsap.registerPlugin(ScrollTrigger);
+
         gsap.to(".hero-bg", { scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }, y: 200 });
         gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
         gsap.to(".hero-cta-wrapper", { opacity: 1, duration: 1, delay: 0.8 });
         gsap.from(".scroll-indicator", { opacity: 0, delay: 2, duration: 1 });
 
         gsap.utils.toArray(".stat-number").forEach(stat => { let target = parseFloat(stat.getAttribute("data-target")); ScrollTrigger.create({ trigger: stat, start: "top 85%", once: true, onEnter: () => { let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 2.5, ease: "power2.out", onUpdate: () => { if(target >= 1000) stat.innerText = Math.ceil(obj.val/1000) + "k+"; else if (target === 100) stat.innerText = Math.ceil(obj.val) + "%"; else stat.innerText = Math.ceil(obj.val) + "h"; } }); } }); });
-        gsap.utils.toArray('.step-card').forEach(step => { ScrollTrigger.create({ trigger: step, start: "top 60%", end: "top 30%", onEnter: () => step.classList.add('active'), onLeaveBack: () => step.classList.remove('active') }); });
+        
+        // Scrollytelling (Dados)
+        gsap.utils.toArray('.scrolly-container .step-card').forEach(step => {
+            ScrollTrigger.create({
+                trigger: step, start: "top 60%", end: "top 30%",
+                onEnter: () => step.classList.add('active'),
+                onLeaveBack: () => step.classList.remove('active')
+            });
+        });
+
+        // Scrollytelling (Mockups)
+        gsap.utils.toArray('.transform-step').forEach((step, i) => {
+            ScrollTrigger.create({
+                trigger: step,
+                start: "top center",
+                end: "bottom center",
+                onToggle: self => {
+                    if (self.isActive) {
+                        // Remove active de todas
+                        document.querySelectorAll('.transform-img').forEach(img => img.classList.remove('active'));
+                        document.querySelectorAll('.transform-step').forEach(s => s.classList.remove('active'));
+                        
+                        // Adiciona active na atual
+                        step.classList.add('active');
+                        const imgId = "mockup-" + i;
+                        const img = document.getElementById(imgId);
+                        if(img) img.classList.add('active');
+                    }
+                }
+            });
+        });
+
         gsap.utils.toArray('.gallery-header').forEach(header => { gsap.to(header, { scrollTrigger: { trigger: header, start: "top 80%" }, opacity: 1, duration: 0.8 }); });
         let groups = document.querySelectorAll('.gallery-grid, .mockup-grid');
-        groups.forEach(group => { let items = group.querySelectorAll('.gallery-item, .mockup-card-flip'); gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" }); });
+        groups.forEach(group => { let items = group.querySelectorAll('.gallery-item, .mockup-card'); gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" }); });
         gsap.to(".landmark-item", { scrollTrigger: { trigger: ".map-info", start: "top 70%" }, opacity: 1, x: 0, duration: 0.6, stagger: 0.2 });
         gsap.to(".price-card", { scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" });
         gsap.from(".calc-wrapper", { scrollTrigger: { trigger: ".calculator-section", start: "top 80%" }, y: 50, opacity: 0, duration: 1, ease: "power2.out" });
