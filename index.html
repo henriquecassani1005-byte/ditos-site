@@ -33,7 +33,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 80px; }
+        html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
 
         body {
             background-color: var(--carbon-black);
@@ -72,9 +72,17 @@
         }
         .btn:hover { background-color: transparent; color: var(--signal-yellow); box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
 
+        /* Botão Pulsante */
+        .btn-pulse-yellow { animation: pulse-yellow-anim 2s infinite; }
+        @keyframes pulse-yellow-anim {
+            0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); }
+        }
+
         /* FAB WhatsApp */
         .fab-whatsapp {
-            position: fixed; bottom: 20px; right: 20px;
+            position: fixed; bottom: 30px; right: 30px;
             background-color: var(--whatsapp-green); color: white;
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -91,7 +99,7 @@
             background: rgba(10, 10, 10, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px); transition: top 0.3s;
         }
-        .nav-logo { height: 32px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .nav-logo { height: 35px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
         
         .nav-links { display: none; gap: 40px; align-items: center; }
         @media (min-width: 768px) { .nav-links { display: flex; } }
@@ -110,7 +118,7 @@
         .mobile-menu-overlay.open { transform: translateX(0); }
         .mobile-menu-overlay a { color: #fff; font-size: 2rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
 
-        /* Hero (Ajuste Mobile) */
+        /* Hero */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 6%; 
             position: relative; overflow: hidden; z-index: 1;
@@ -121,7 +129,6 @@
             z-index: -1; will-change: transform;
         }
         .hero-content { position: relative; z-index: 5; } 
-        /* Ajuste de fonte H1 para não estourar no mobile */
         .hero h1 { font-size: clamp(2rem, 8vw, 4.5rem); max-width: 950px; margin-top: 60px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .hero p { font-size: clamp(1rem, 1.5vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; margin-bottom: 10px; color: #e0e0e0; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         
@@ -164,16 +171,8 @@
 
         /* Galeria */
         .gallery-section { padding: 80px 5%; background-color: #0a0a0a; }
-        
-        /* Topo da Galeria (Ajuste Mobile) */
-        .gallery-top-bar { 
-            display: flex; flex-direction: column; align-items: flex-start; 
-            margin-bottom: 40px; gap: 20px;
-        }
-        @media (min-width: 768px) {
-            .gallery-top-bar { flex-direction: row; justify-content: space-between; align-items: center; }
-        }
-        
+        .gallery-top-bar { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 40px; gap: 20px; }
+        @media (min-width: 768px) { .gallery-top-bar { flex-direction: row; justify-content: space-between; align-items: center; } }
         .theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
         .theme-switch-wrapper span { font-size: 0.9rem; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .theme-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
@@ -195,7 +194,7 @@
         }
         .gallery-item { position: relative; overflow: hidden; border-radius: 4px; height: 100%; min-height: 250px; opacity: 0; transform: translateY(30px); transition: box-shadow 0.3s; }
         body.night-active .gallery-item { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); border-color: #444; }
-        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease, filter 0.5s ease; filter: grayscale(20%); }
+        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease, filter 0.5s ease, opacity 0.5s ease; filter: grayscale(20%); }
         .gallery-item:hover img { transform: scale(1.03); filter: grayscale(0%); }
         
         .gallery-caption {
@@ -282,6 +281,7 @@
         @media (min-width: 768px) { .footer-block { text-align: left; } .footer-block.contact-info { text-align: right; } }
         .footer-block a { display: inline-flex; align-items: center; justify-content: center; color: var(--signal-yellow); text-decoration: none; }
         @media (min-width: 768px) { .footer-block a { justify-content: flex-end; } }
+        .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
     </style>
 </head>
 <body>
@@ -424,12 +424,27 @@
     <section id="mockups" class="mockup-section">
         <div class="gallery-header">
             <h3>O Poder da Transformação</h3>
-            <p>Visualize o impacto da sua marca dominando a paisagem.</p>
+            <p>Visualize o impacto da sua marca dominando a paisagem. Passe o mouse (ou toque) para revelar o potencial.</p>
         </div>
         <div class="mockup-grid">
-            <div class="mockup-card"><span class="mockup-label">Automotivo</span><span class="mockup-instruction">Toque para ver</span><img src="foto-outdoor.jpg" class="mockup-image"><img src="https://placehold.co/900x300/111/FFD500?text=SEU+CARRO+AQUI" class="mockup-image mockup-after"></div>
-            <div class="mockup-card"><span class="mockup-label">Fitness</span><span class="mockup-instruction">Toque para ver</span><img src="foto-outdoor.jpg" class="mockup-image"><img src="https://placehold.co/900x300/111/FFD500?text=SUA+ACADEMIA+AQUI" class="mockup-image mockup-after"></div>
-            <div class="mockup-card"><span class="mockup-label">Imobiliária</span><span class="mockup-instruction">Toque para ver</span><img src="foto-outdoor.jpg" class="mockup-image"><img src="https://placehold.co/900x300/111/FFD500?text=SEU+LAN%C3%87AMENTO" class="mockup-image mockup-after"></div>
+            <div class="mockup-card">
+                <span class="mockup-label">Automotivo</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="mockup-carro.jpg" class="mockup-image mockup-after" alt="Mockup Carro">
+            </div>
+            <div class="mockup-card">
+                <span class="mockup-label">Fitness</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="mockup-gym.jpg" class="mockup-image mockup-after" alt="Mockup Gym">
+            </div>
+            <div class="mockup-card">
+                <span class="mockup-label">Imobiliária</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="mockup-imob.jpg" class="mockup-image mockup-after" alt="Mockup Imob">
+            </div>
         </div>
     </section>
 
@@ -507,6 +522,7 @@
             document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-icon').innerText = '+'; });
             if (!isActive) { item.classList.add('active'); element.querySelector('.faq-icon').innerText = '-'; }
         }
+
         function toggleNightMode() {
             document.body.classList.toggle('night-active');
             const images = document.querySelectorAll('.gallery-item img');
@@ -518,6 +534,7 @@
                 }
             });
         }
+
         function updateCalc() {
             const cpm = document.getElementById('digitalCpm').value;
             document.getElementById('cpmValue').innerText = 'R$ ' + cpm + ',00';
@@ -531,8 +548,8 @@
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.to(".hero-bg", { scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }, y: 200 });
-        gsap.from(".hero-content > h1, .hero-content > p", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
-        gsap.to(".hero-cta-wrapper", { opacity: 1, duration: 1, delay: 0.8 });
+        gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+        gsap.from(".hero-cta-wrapper", { y: 50, opacity: 0, duration: 1, delay: 0.8, ease: "back.out(1.7)" });
         gsap.from(".scroll-indicator", { opacity: 0, delay: 2, duration: 1 });
 
         gsap.utils.toArray(".stat-number").forEach(stat => { let target = parseFloat(stat.getAttribute("data-target")); ScrollTrigger.create({ trigger: stat, start: "top 85%", once: true, onEnter: () => { let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 2.5, ease: "power2.out", onUpdate: () => { if(target >= 1000) stat.innerText = Math.ceil(obj.val/1000) + "k+"; else if (target === 100) stat.innerText = Math.ceil(obj.val) + "%"; else stat.innerText = Math.ceil(obj.val) + "h"; } }); } }); });
