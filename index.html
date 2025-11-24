@@ -3,156 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Outdoor em Pouso Alegre | Ditos Painéis - Rodovia JK</title>
-    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103).">
+    <meta name="description" content="Aluguel de Outdoor em Pouso Alegre/MG. Localização estratégica na Rodovia JK (Km 103). Impacto visual de 40k+ pessoas/dia.">
+    <meta property="og:title" content="Ditos Painéis - Autoridade em OOH">
+    <meta property="og:description" content="Infraestrutura de visibilidade na Entrada da Cidade. Veja dados de alcance e disponibilidade.">
+    <meta property="og:image" content="rodovia-2.jpg">
+    <meta property="og:type" content="website">
+
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        :root { --carbon-black: #0a0a0a; --photon-white: #ffffff; --signal-yellow: #FFD500; --concrete-gray: #1a1a1a; --whatsapp-green: #25D366; }
+        /* --- IDENTITY SYSTEM --- */
+        :root {
+            --carbon-black: #0a0a0a;
+            --photon-white: #ffffff;
+            --signal-yellow: #FFD500;
+            --concrete-gray: #1a1a1a;
+            --text-gray: #a1a1a1;
+            --whatsapp-green: #25D366;
+            --urgency-red: #ff4444;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
-        body { background-color: var(--carbon-black); color: var(--photon-white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* Header & Nav */
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%; z-index: 999; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 10, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); }
-        .nav-logo { height: 35px; }
-        .nav-links { display: none; gap: 40px; }
-        @media (min-width: 768px) { .nav-links { display: flex; } }
-        .nav-links a { color: #ccc; text-decoration: none; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .cta-header { border: 1px solid var(--signal-yellow); color: var(--signal-yellow) !important; padding: 8px 20px; border-radius: 4px; }
+        body {
+            background-color: var(--carbon-black);
+            color: var(--photon-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Tipografia */
+        h1 { font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; }
+        h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; color: #fff; }
+        h3 { font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: #fff; }
+        p { font-weight: 400; color: var(--text-gray); font-size: 1rem; line-height: 1.6; }
         
-        /* Mobile Menu */
-        .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .text-highlight { color: var(--signal-yellow); }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            background-color: var(--signal-yellow);
+            color: #000;
+            padding: 16px 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--signal-yellow);
+            cursor: pointer;
+        }
+        .btn:hover { background-color: transparent; color: var(--signal-yellow); box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
+        .btn-pulse-yellow { animation: pulse-yellow-anim 2s infinite; }
+        @keyframes pulse-yellow-anim { 0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); } }
+
+        /* FAB */
+        .fab-whatsapp {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--whatsapp-green); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 1000;
+            transition: transform 0.3s; text-decoration: none;
+        }
+        .fab-whatsapp:hover { transform: scale(1.1); }
+        .fab-whatsapp svg { width: 32px; height: 32px; fill: white; }
+
+        /* Header */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%;
+            z-index: 999; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 10, 10, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px); transition: top 0.3s;
+        }
+        .nav-logo { height: 35px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        
+        .nav-links { display: none; gap: 40px; align-items: center; }
+        @media (min-width: 768px) { .nav-links { display: flex; } }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--signal-yellow); }
+        .cta-header { border: 1px solid var(--signal-yellow); color: var(--signal-yellow) !important; padding: 8px 20px; border-radius: 4px; }
+        .cta-header:hover { background: var(--signal-yellow); color: #000 !important; }
+
+        /* Mobile Controls */
+        .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
         @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
         .mobile-controls { display: flex; align-items: center; gap: 15px; }
         @media (min-width: 768px) { .mobile-controls { display: none; } }
-        .mobile-cta-small { background: var(--whatsapp-green); color: white; padding: 8px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+        .mobile-cta-small { background-color: var(--whatsapp-green); color: white; padding: 8px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+        .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--carbon-black); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 998; transform: translateX(100%); transition: transform 0.4s ease-in-out; }
+        .mobile-menu-overlay.open { transform: translateX(0); }
+        .mobile-menu-overlay a { color: #fff; font-size: 2rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
 
         /* Hero */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 6%; position: relative; overflow: hidden; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 120%; background: linear-gradient(to bottom, rgba(10,10,10,0.6), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover; z-index: -1; }
-        .hero h1 { font-size: clamp(2rem, 8vw, 4.5rem); max-width: 950px; margin-top: 60px; }
-        .hero p { font-size: clamp(1rem, 1.5vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; color: #e0e0e0; }
-        .btn { display: inline-block; background: var(--signal-yellow); color: #000; padding: 16px 32px; font-weight: 700; text-decoration: none; border-radius: 4px; margin-top: 30px; }
-        
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 6%; 
+            position: relative; overflow: hidden; z-index: 1;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.6), rgba(10,10,10,0.4), var(--carbon-black)), url('rodovia-2.jpg') no-repeat center/cover;
+            z-index: -1; will-change: transform;
+        }
+        .hero-content { position: relative; z-index: 5; } 
+        .hero h1 { font-size: clamp(2rem, 8vw, 4.5rem); max-width: 950px; margin-top: 60px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .hero p { font-size: clamp(1rem, 1.5vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 20px; margin-bottom: 10px; color: #e0e0e0; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero-cta-wrapper { margin-top: 40px; position: relative; z-index: 10; display: block; }
+        .scroll-indicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 2rem; animation: bounce 2s infinite; opacity: 0.7; z-index: 5; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+
         /* Stats */
-        .stats-section { padding: 40px 5%; background: #111; border-bottom: 1px solid #222; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center; }
-        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; }
-        .stat-label { font-size: 0.8rem; text-transform: uppercase; color: var(--signal-yellow); letter-spacing: 1.5px; }
+        .stats-section { padding: 40px 5%; background: #111; border-bottom: 1px solid #222; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center; position: relative; z-index: 5; }
+        .stat-item { flex: 1 1 150px; }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: var(--photon-white); line-height: 1; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--signal-yellow); font-weight: 600; }
 
         /* Scrollytelling */
-        .scrolly-container { display: flex; flex-direction: column; }
+        .scrolly-container { display: flex; flex-direction: column; position: relative; }
         @media (min-width: 768px) { .scrolly-container { flex-direction: row; } }
-        .visual-side { flex: 1; height: 100vh; position: sticky; top: 0; background: url('mercado-1.jpg') center/cover; display: none; }
+        .visual-side { flex: 1; height: 100vh; position: sticky; top: 0; background-image: url('mercado-1.jpg'); background-size: cover; background-position: center; display: none; transition: background-image 0.5s ease-in-out; }
         @media (min-width: 768px) { .visual-side { display: block; } }
-        .text-side { flex: 1; background: rgba(10,10,10,0.97); }
+        .text-side { flex: 1; background: rgba(10,10,10,0.97); z-index: 2; }
         .step-card { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 8%; border-left: 1px solid rgba(255,255,255,0.05); opacity: 0.2; transition: opacity 0.6s; }
         .step-card.active { opacity: 1; }
         .step-card h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: #fff; border-bottom: 2px solid var(--signal-yellow); display: inline-block; padding-bottom: 5px; }
+        .step-card p { font-size: 1.1rem; max-width: 550px; line-height: 1.6; margin-top: 15px; }
 
         /* Specs */
-        .specs { padding: 60px 8%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid #222; background: #0f0f0f; }
+        .specs { padding: 60px 8%; display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid #222; background-color: #0f0f0f; }
         .spec-item { flex: 1 1 160px; border-left: 1px solid #333; padding-left: 20px; }
-        .spec-item h4 { color: #888; font-size: 0.75rem; letter-spacing: 1px; }
-        .spec-item p { font-size: 1.1rem; font-weight: 600; }
+        .spec-item h4 { color: var(--text-gray); margin-bottom: 5px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .spec-item p { font-size: 1.1rem; font-weight: 600; color: #fff; }
 
         /* Galeria */
-        .gallery-section { padding: 80px 5%; background: #0a0a0a; }
-        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        @media (min-width: 768px) { 
-            .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 300px); } 
+        .gallery-section { padding: 80px 5%; background-color: #0a0a0a; }
+        .gallery-top-bar { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 40px; gap: 20px; }
+        @media (min-width: 768px) { .gallery-top-bar { flex-direction: row; justify-content: space-between; align-items: center; } }
+        .theme-switch-wrapper { display: flex; align-items: center; gap: 10px; }
+        .theme-switch-wrapper span { font-size: 0.9rem; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .theme-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: var(--signal-yellow); transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #000; border: 1px solid #333; }
+        input:checked + .slider:before { transform: translateX(24px); background-color: #fff; box-shadow: 0 0 10px #fff; }
+
+        .gallery-header { border-left: 4px solid var(--signal-yellow); padding-left: 20px; }
+        .gallery-header h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: #fff; margin-bottom: 5px; }
+        .gallery-header p { font-size: 1rem; color: #888; max-width: 600px; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 80px; }
+        @media (min-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 300px); }
             .gallery-item.video-highlight { grid-column: span 2; grid-row: span 2; }
             .gallery-item.wide { grid-column: span 2; }
         }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 4px; height: 100%; min-height: 250px; }
-        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 4px; height: 100%; min-height: 250px; opacity: 0; transform: translateY(30px); transition: box-shadow 0.3s; }
+        body.night-active .gallery-item { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); border-color: #444; }
+        .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease, filter 0.5s ease, opacity 0.5s ease; filter: grayscale(20%); }
+        .gallery-item:hover img { transform: scale(1.03); filter: grayscale(0%); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent); padding: 20px; z-index: 5; }
+        @media (min-width: 768px) { .gallery-caption { opacity: 0; transition: opacity 0.3s; } .gallery-item:hover .gallery-caption { opacity: 1; } }
+        .gallery-caption h5 { color: var(--signal-yellow); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .gallery-caption p { color: #fff; font-size: 0.85rem; }
+        .video-tag { position: absolute; top: 15px; left: 15px; background: #cc0000; color: white; padding: 5px 10px; font-size: 0.7rem; font-weight: 800; border-radius: 2px; z-index: 10; letter-spacing: 1px; }
 
-        /* --- SEÇÃO MOCKUPS (CARD FLIP CORRIGIDO) --- */
-        .mockup-section { padding: 80px 5%; background: #0e0e0e; border-top: 1px solid #222; }
-        .mockup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        /* Marquee */
+        .partners-section { padding: 60px 0; background-color: #0f0f0f; border-top: 1px solid #222; border-bottom: 1px solid #222; overflow: hidden; }
+        .partners-header { text-align: center; margin-bottom: 40px; }
+        .partners-header h3 { color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+        .marquee-container { display: flex; width: 100%; position: relative; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .marquee-track { display: flex; gap: 60px; animation: scroll 80s linear infinite; white-space: nowrap; padding-left: 60px; align-items: center; }
+        .partner-logo img { height: 35px; width: auto; filter: grayscale(100%) opacity(0.4); transition: all 0.4s ease; }
+        .partner-logo img:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        @media (max-width: 768px) { .marquee-track { gap: 40px; animation-duration: 40s; } .partner-logo img { height: 30px; } }
+
+        /* Mapa */
+        .map-section { display: flex; flex-wrap: wrap; background-color: #161616; }
+        .map-container { flex: 2; min-width: 300px; height: 500px; position: relative; filter: none; }
+        .map-info { flex: 1; min-width: 300px; padding: 50px 30px; display: flex; flex-direction: column; justify-content: center; background: #1a1a1a; border-left: 1px solid #222; }
+        .landmark-list { margin-top: 30px; }
+        .landmark-item { display: flex; align-items: flex-start; margin-bottom: 20px; opacity: 0; transform: translateX(-20px); }
+        .landmark-icon { width: 10px; height: 10px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 15px; margin-top: 6px; flex-shrink: 0; }
+        .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 2px; font-size: 1rem; }
+        .landmark-info small { color: #888; font-size: 0.85rem; line-height: 1.4; display: block; }
+        .companies-list { list-style: none; padding: 0; margin-top: 5px; }
+        .companies-list li { color: #aaa; font-size: 0.85rem; margin-bottom: 5px; display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
+
+        /* --- MOCKUPS COM EFEITO FLIP (RESTAURADO & CORRIGIDO) --- */
+        .mockup-section { padding: 80px 5%; background-color: #0e0e0e; border-top: 1px solid #222; }
+        .mockup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
         
-        .flip-container {
-            perspective: 1000px;
-            cursor: pointer;
-        }
-        
-        /* O Card que gira */
-        .flipper {
-            position: relative;
+        /* Container do Flip */
+        .mockup-card-flip {
+            background-color: transparent;
             width: 100%;
             aspect-ratio: 16/9;
-            transition: 0.8s;
-            transform-style: preserve-3d;
-            border-radius: 8px;
+            perspective: 1000px; /* Profundidade 3D Essencial */
+            cursor: pointer;
         }
 
-        /* Estado virado */
-        .flip-container.hover .flipper {
+        /* O Objeto que gira */
+        .mockup-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d; /* Mantém os filhos em 3D */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Ação de Girar */
+        .mockup-card-flip.flipped .mockup-inner {
             transform: rotateY(180deg);
         }
 
-        .front, .back {
+        /* Faces da Carta */
+        .mockup-front, .mockup-back {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            backface-visibility: hidden; /* Esconde o verso quando de frente */
+            width: 100%;
+            height: 100%;
             -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; /* Esconde o verso */
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #333;
+            background-color: #111;
         }
 
-        .front {
-            background: #111;
+        /* Frente (Outdoor Vazio) */
+        .mockup-front {
             z-index: 2;
-            transform: rotateY(0deg); /* Garante posição inicial */
+            transform: rotateY(0deg);
         }
         
-        .back {
-            background: #111;
-            transform: rotateY(180deg); /* Já começa virado para trás */
+        /* Verso (Mockup) */
+        .mockup-back {
+            transform: rotateY(180deg);
         }
 
-        .front img, .back img { width: 100%; height: 100%; object-fit: cover; }
+        .mockup-front img, .mockup-back img { width: 100%; height: 100%; object-fit: cover; }
+
+        .mockup-label { 
+            position: absolute; top: 10px; left: 10px; z-index: 10; 
+            background: rgba(0,0,0,0.7); color: #fff; padding: 4px 10px; font-size: 0.7rem; 
+            font-weight: 700; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #444; 
+        }
         
-        .mockup-label { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 4px 10px; font-size: 0.7rem; font-weight: 700; border-radius: 4px; z-index: 10; border: 1px solid #444; }
-        .click-instruction { position: absolute; bottom: 10px; right: 10px; color: var(--signal-yellow); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; animation: pulse 2s infinite; z-index: 10; pointer-events: none; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .click-instruction { 
+            position: absolute; bottom: 10px; right: 10px; z-index: 10; 
+            color: var(--signal-yellow); font-size: 0.75rem; font-weight: 600; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8); pointer-events: none; 
+            text-transform: uppercase; animation: pulse-text 2s infinite; 
+        }
+        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+
+        /* Calculadora */
+        .calculator-section { padding: 80px 5%; background-color: #121212; border-top: 1px solid #333; }
+        .calc-wrapper { max-width: 900px; margin: 0 auto; background: #1a1a1a; border-radius: 8px; padding: 30px; border: 1px solid #333; display: flex; flex-wrap: wrap; gap: 30px; }
+        .calc-input, .calc-result { flex: 1; min-width: 280px; }
+        .calc-header h3 { font-size: 1.4rem; margin-bottom: 5px; color: #fff; }
+        .calc-header p { color: #999; font-size: 0.9rem; margin-bottom: 25px; }
+        label { display: block; color: var(--signal-yellow); margin-bottom: 10px; font-weight: 600; }
+        input[type="range"] { width: 100%; margin-bottom: 10px; cursor: pointer; accent-color: var(--signal-yellow); }
+        .cpm-display { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 10px; display: block; }
+        .result-box { background: #111; padding: 20px; border-radius: 8px; border-left: 4px solid var(--whatsapp-green); height: 100%; display: flex; flex-direction: column; justify-content: center; }
+        .result-title { color: #999; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .result-value { font-size: 2rem; font-weight: 900; color: var(--whatsapp-green); margin-bottom: 5px; }
+        .result-desc { color: #ddd; font-size: 0.85rem; line-height: 1.4; }
 
         /* Preços */
-        .pricing { padding: 100px 5%; background: var(--carbon-black); text-align: center; }
+        .pricing { padding: 100px 5%; background-color: var(--carbon-black); text-align: center; }
         .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 50px; }
-        .price-card { background: var(--concrete-gray); padding: 35px; border-radius: 4px; width: 100%; max-width: 350px; border: 1px solid #333; }
-        .price-card.featured { border: 1px solid var(--signal-yellow); background: #121212; position: relative; }
-        .price-card.featured::before { content: 'MAIS VENDIDO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--signal-yellow); color: #000; padding: 4px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 20px; }
-        .anchor-box { background: rgba(255,255,255,0.05); padding: 10px; margin-bottom: 20px; font-size: 0.8rem; color: #aaa; border-left: 2px solid #444; text-align: left; }
-        .anchor-box.green { border-color: var(--whatsapp-green); color: #ddd; }
-        .anchor-box.yellow { border-color: var(--signal-yellow); color: #fff; }
-        
+        .price-card { background: var(--concrete-gray); padding: 35px; border-radius: 4px; text-align: left; width: 100%; max-width: 350px; border: 1px solid #333; display: flex; flex-direction: column; opacity: 0; transform: translateY(50px); transition: border-color 0.3s; }
+        .price-card:hover { border-color: #444; }
+        .price-card.featured { border: 1px solid var(--signal-yellow); background: #121212; box-shadow: 0 0 30px rgba(255, 213, 0, 0.05); }
+        @media (max-width: 768px) { .price-card.featured { transform: translateY(50px); z-index: 1; } }
+        .price-value { font-size: 2.5rem; font-weight: 900; margin: 15px 0 5px; color: #fff; letter-spacing: -1px; }
+        .anchor-box { background: rgba(255,255,255,0.03); padding: 10px; border-radius: 2px; margin-bottom: 20px; font-size: 0.8rem; color: #aaa; border-left: 2px solid #444; }
+        .anchor-box.green { border-left-color: var(--whatsapp-green); color: #ddd; }
+        .anchor-box.yellow { border-left-color: var(--signal-yellow); color: #fff; }
+        .btn-pulse-yellow { animation: pulse-yellow-anim 2s infinite; }
+        @keyframes pulse-yellow-anim { 0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); } }
+
         /* FAQ & Footer */
-        .faq-section { padding: 80px 5%; border-top: 1px solid #222; }
-        .faq-question { padding: 20px 0; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; border-bottom: 1px solid #222; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; color: #888; padding-right: 20px; }
+        .faq-section { padding: 80px 5%; background-color: #0a0a0a; border-top: 1px solid #222; }
+        .faq-question { padding: 20px 0; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; color: #ddd; transition: 0.3s; }
+        .faq-question:hover { color: var(--signal-yellow); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; color: #999; padding-right: 15px; }
         .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
-        footer { padding: 80px 20px; background: #050505; border-top: 1px solid #222; text-align: center; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left; max-width: 1000px; margin: 0 auto; }
+
+        footer { padding: 80px 20px; border-top: 1px solid #222; background: #050505; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto 40px auto; text-align: left; }
+        .footer-block { flex: 1; min-width: 280px; text-align: center; }
+        @media (min-width: 768px) { .footer-block { text-align: left; } .footer-block.contact-info { text-align: right; } }
+        .footer-block a { display: inline-flex; align-items: center; justify-content: center; color: var(--signal-yellow); text-decoration: none; }
+        @media (min-width: 768px) { .footer-block a { justify-content: flex-end; } }
+        .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
     </style>
 </head>
 <body>
+
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <a href="#galeria" onclick="toggleMenu()">Galeria</a>
+        <a href="#mapa" onclick="toggleMenu()">Localização</a>
+        <a href="#precos" onclick="toggleMenu()">Ver Valores</a>
+        <a href="#faq" onclick="toggleMenu()">Dúvidas</a>
+        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 1rem; color: #666; margin-top: 40px;">[ Fechar X ]</a>
+    </div>
+
+    <a href="https://wa.me/5535999463566?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20outdoor%20Ditos%20Paineis." class="fab-whatsapp" target="_blank" title="Falar no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-26.6l-6.7-4.2-69.8 18.3 18.6-68.1-4.4-6.9c-18.3-29.1-28-63.1-28-99.2 0-101.5 82.6-184.1 184.1-184.1 49.1 0 95.4 19.1 130.1 53.9 34.8 34.8 53.9 81.1 53.9 130.1-.1 101.5-82.6 184.1-184.1 184.1z"/></svg>
+    </a>
 
     <header>
         <img src="logo.png" alt="Ditos Painéis Logo" class="nav-logo">
         <nav class="nav-links">
             <a href="#galeria">Galeria</a>
             <a href="#mapa">Localização</a>
+            <a href="#faq">Dúvidas</a>
             <a href="#precos" class="cta-header">Ver Valores</a>
         </nav>
         <div class="mobile-controls">
             <a href="https://wa.me/5535999463566" class="mobile-cta-small">Reservar</a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
         </div>
     </header>
 
@@ -160,119 +353,260 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Infraestrutura de Visibilidade na Entrada da Cidade.</h1>
-            <p>Operamos exclusivamente na Rodovia JK, Km 103. Somos o elo físico entre sua marca e o mercado.</p>
-            <a href="#precos" class="btn">Ver Disponibilidade</a>
+            <p>Operamos exclusivamente na Rodovia JK, Km 103, o epicentro do desenvolvimento econômico de Pouso Alegre. Somos o elo físico entre sua marca e o mercado.</p>
+            <div class="hero-cta-wrapper"><a href="#precos" class="btn">Ver Disponibilidade</a></div>
+            <div class="scroll-indicator">↓</div>
         </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stat-item"><span class="stat-number" data-target="40000">0</span><span class="stat-label">Alcance Diário</span></div>
+        <div class="stat-item"><span class="stat-number" data-target="100">0</span><span class="stat-label">% Visibilidade</span></div>
+        <div class="stat-item"><span class="stat-number" data-target="24">0</span><span class="stat-label">Horas de Impacto</span></div>
     </section>
 
     <main class="scrolly-container">
         <div class="visual-side"></div>
         <div class="text-side">
-            <div class="step-card"><h2>Contra fatos não há algoritmo.</h2><p>O marketing digital mente. O asfalto não.</p></div>
-            <div class="step-card"><h2>40.000 Pessoas/Dia.</h2><p>Custo Zero por Clique. O outdoor não cobra CPC.</p></div>
-            <div class="step-card"><h2>A Regra da Solidez.</h2><p>Estar aqui prova que você tem capital e estrutura.</p></div>
+            <div class="step-card"><h2>Contra fatos não há algoritmo.</h2><p>O marketing digital mente. O asfalto não. Enquanto você briga por 3 segundos de atenção no celular, nós entregamos a única audiência que não pode ser desligada.</p></div>
+            <div class="step-card"><h2>40.000 Pessoas/Dia.</h2><p>Custo Zero por Clique. Não são impressões fantasmas. O outdoor não cobra CPC. Se passarem 10 ou 100 mil pessoas, seu custo é fixo.</p></div>
+            <div class="step-card"><h2>A Regra da Solidez.</h2><p>Empresas de "fundo de quintal" não anunciam em outdoor. Estar aqui prova, instantaneamente, que você tem capital e estrutura.</p></div>
         </div>
     </main>
 
+    <section class="specs">
+        <div class="spec-item"><h4>DIMENSÕES</h4> <p>9,00m x 3,00m</p></div>
+        <div class="spec-item"><h4>ILUMINAÇÃO</h4> <p>LED Frontal</p></div>
+        <div class="spec-item"><h4>TRÁFEGO</h4> <p>40k+ Pessoas/Dia</p></div>
+        <div class="spec-item"><h4>LOCALIZAÇÃO</h4><p>Rod. JK - Km 103</p></div>
+    </section>
+
     <section id="galeria" class="gallery-section">
+        <div class="gallery-top-bar">
+            <div class="gallery-header"><h3>Lado: Mercado Baronesa</h3><p>Influência no momento da compra.</p></div>
+            <div class="theme-switch-wrapper"><span style="margin-right: 10px;">☀️ Dia</span><label class="theme-switch" for="checkbox"><input type="checkbox" id="checkbox" onchange="toggleNightMode()"><div class="slider round"></div></label><span style="margin-left: 10px;">🌙 Noite</span></div>
+        </div>
         <div class="gallery-grid">
             <div class="gallery-item video-highlight">
                 <span class="video-tag">FLUXO REAL</span>
                 <video controls poster="mercado-1.jpg" muted loop autoplay playsinline><source src="video-estacionamento.mp4" type="video/mp4"></video>
+                <div class="gallery-caption"><h5>Influência na Compra</h5><p>Capturamos a atenção do consumidor.</p></div>
             </div>
-            <div class="gallery-item"><img src="mercado-1.jpg" alt="Mercado"></div>
-            <div class="gallery-item"><img src="mercado-2.jpg" alt="Grade"></div>
-            <div class="gallery-item"><img src="mercado-3.jpg" alt="Painel"></div>
+            <div class="gallery-item"><img src="mercado-1.jpg" data-day="mercado-1.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Mercado" loading="lazy"><div class="gallery-caption"><h5>Audiência Qualificada</h5><p>Famílias com poder de compra.</p></div></div>
+            <div class="gallery-item"><img src="mercado-2.jpg" data-day="mercado-2.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Grade" loading="lazy"><div class="gallery-caption"><h5>Visibilidade Inevitável</h5><p>Estrutura acima da linha visual.</p></div></div>
+            <div class="gallery-item"><img src="mercado-3.jpg" data-day="mercado-3.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Painel" loading="lazy"><div class="gallery-caption"><h5>Iluminação LED</h5><p>Impacto garantido 24 horas.</p></div></div>
+            <div class="gallery-item"><img src="mercado-4.jpg" data-day="mercado-4.jpg" data-night="https://placehold.co/600x800/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Longe" loading="lazy"><div class="gallery-caption"><h5>Frequência de Impacto</h5><p>Memória de marca constante.</p></div></div>
+        </div>
+        <div class="gallery-header" style="margin-top: 100px;"><h3>Lado: Rodovia</h3><p>Posicionamento corporativo na BR-459.</p></div>
+        <div class="gallery-grid" style="margin-bottom: 0;">
+            <div class="gallery-item wide"><img src="rodovia-1.jpg" data-day="rodovia-1.jpg" data-night="https://placehold.co/800x400/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Rodovia" loading="lazy"><div class="gallery-caption"><h5>Posicionamento Corporativo</h5><p>Endereço valioso.</p></div></div>
+            <div class="gallery-item wide"><img src="rodovia-2.jpg" data-day="rodovia-2.jpg" data-night="https://placehold.co/800x400/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Fluxo" loading="lazy"><div class="gallery-caption"><h5>Solidez Financeira</h5><p>Imagem de estabilidade.</p></div></div>
+            <div class="gallery-item wide"><img src="rodovia-mapa.jpg" data-day="rodovia-mapa.jpg" data-night="https://placehold.co/800x400/050505/FFD500?text=IMAGEM+DE+NOITE+(LED+ON)" alt="Map" loading="lazy"><div class="gallery-caption"><h5>Employer Branding</h5><p>Farol para talentos.</p></div></div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <div class="partners-header"><h3>Sua marca em boa companhia.</h3></div>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="partner-logo"><img src="logo-vw.png"></div><div class="partner-logo"><img src="logo-skyfit.png"></div><div class="partner-logo"><img src="logo-plaza.png"></div><div class="partner-logo"><img src="logo-anglo.png"></div><div class="partner-logo"><img src="logo-mart.png"></div><div class="partner-logo"><img src="logo-costela.png"></div><div class="partner-logo"><img src="logo-baronesa.png"></div><div class="partner-logo"><img src="logo-construarte.png"></div>
+                <div class="partner-logo"><img src="logo-vw.png"></div><div class="partner-logo"><img src="logo-skyfit.png"></div><div class="partner-logo"><img src="logo-plaza.png"></div><div class="partner-logo"><img src="logo-anglo.png"></div><div class="partner-logo"><img src="logo-mart.png"></div><div class="partner-logo"><img src="logo-costela.png"></div><div class="partner-logo"><img src="logo-baronesa.png"></div><div class="partner-logo"><img src="logo-construarte.png"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mapa" class="map-section">
+        <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d923.25123456789!2d-45.9135588!3d-22.220041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzEyLjIiUyA0NcKwNTQnNDguOCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        <div class="map-info">
+            <h3 style="font-size: 2rem; margin-bottom: 20px;">Pontos Relevantes Próximos</h3>
+            <p style="font-size: 1rem; color: #888; margin-bottom: 40px;">A localização mais nobre da entrada de Pouso Alegre.</p>
+            <div class="landmark-list">
+                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Vizinhança</span><small>Hipermercado Baronesa e Construarte.</small></div></div>
+                <div class="landmark-item">
+                    <div class="landmark-icon" style="background-color: #555;"></div> 
+                    <div class="landmark-info" style="width: 100%;">
+                        <span>Empresas Próximas</span>
+                        <ul class="companies-list">
+                            <li>Volkswagen <strong>400m</strong></li>
+                            <li>Skyfit <strong>400m</strong></li>
+                            <li>Hotel Marques Plaza <strong>500m</strong></li>
+                            <li>Colégio Anglo <strong>500m</strong></li>
+                            <li>Mart Minas Atacado <strong>500m</strong></li>
+                            <li>Costela no Bafo <strong>850m</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="mockups" class="mockup-section">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h3 style="color: #fff; font-size: 2rem;">O Poder da Transformação</h3>
-            <p style="color: #888;">Toque nos cards para revelar o potencial.</p>
+        <div class="gallery-header">
+            <h3>O Poder da Transformação</h3>
+            <p>Visualize o impacto da sua marca dominando a paisagem.</p>
         </div>
         <div class="mockup-grid">
-            <div class="flip-container" onclick="this.classList.toggle('hover')">
-                <div class="flipper">
-                    <div class="front">
+            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
+                <div class="mockup-inner">
+                    <div class="mockup-front">
                         <span class="mockup-label">Automotivo</span>
                         <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="foto-outdoor.jpg" alt="Vazio"> </div>
-                    <div class="back">
-                        <img src="mockup-carro.jpg" alt="Mockup Carro"> </div>
+                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
+                    </div>
+                    <div class="mockup-back">
+                        <img src="mockup-carro.jpg" alt="Mockup Carro">
+                    </div>
                 </div>
             </div>
-            <div class="flip-container" onclick="this.classList.toggle('hover')">
-                <div class="flipper">
-                    <div class="front">
+            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
+                <div class="mockup-inner">
+                    <div class="mockup-front">
                         <span class="mockup-label">Fitness</span>
                         <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="foto-outdoor.jpg" alt="Vazio">
+                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
                     </div>
-                    <div class="back">
-                        <img src="mockup-gym.jpg" alt="Mockup Gym">
+                    <div class="mockup-back">
+                        <img src="mockup-gym.jpg" alt="Mockup Academia">
                     </div>
                 </div>
             </div>
-            <div class="flip-container" onclick="this.classList.toggle('hover')">
-                <div class="flipper">
-                    <div class="front">
+            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
+                <div class="mockup-inner">
+                    <div class="mockup-front">
                         <span class="mockup-label">Imobiliária</span>
                         <span class="click-instruction">👆 Toque para Virar</span>
-                        <img src="foto-outdoor.jpg" alt="Vazio">
+                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
                     </div>
-                    <div class="back">
+                    <div class="mockup-back">
                         <img src="mockup-imob.jpg" alt="Mockup Imob">
                     </div>
+                </div>
+            </div>
+            <div class="mockup-card-flip" onclick="this.classList.toggle('flipped')">
+                <div class="mockup-inner">
+                    <div class="mockup-front">
+                        <span class="mockup-label">Educação</span>
+                        <span class="click-instruction">👆 Toque para Virar</span>
+                        <img src="mercado-3.jpg" alt="Outdoor Vazio">
+                    </div>
+                    <div class="mockup-back">
+                        <img src="mockup-uni.jpg" alt="Mockup Faculdade">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator-section">
+        <div class="calc-wrapper">
+            <div class="calc-input">
+                <div class="calc-header"><h3>Desafio do ROI</h3><p>Compare o custo de atingir o mesmo público no digital.</p></div>
+                <label for="digitalCpm">Seu CPM no Instagram/Facebook (R$):</label>
+                <input type="range" id="digitalCpm" min="5" max="50" step="1" value="10" oninput="updateCalc()">
+                <span class="cpm-display" id="cpmValue">R$ 10,00</span>
+                <p style="font-size: 0.8rem; color: #666;">*Custo médio por 1.000 impressões.</p>
+            </div>
+            <div class="calc-result">
+                <div class="result-box">
+                    <span class="result-title">Economia Mensal com a Ditos:</span>
+                    <span class="result-value" id="savingsValue">R$ 9.500</span>
+                    <span class="result-desc">Para ter 1.2 Milhão de views no digital com esse CPM, você gastaria uma fortuna. Na Ditos, é fixo.</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="precos" class="pricing">
+        <h2 style="color: #fff; margin-bottom: 15px;">Domínio da Paisagem</h2>
+        <p style="color: #aaa; margin-bottom: 60px;">Investimento para dominar a Rodovia JK.</p>
         <div class="pricing-grid">
             <div class="price-card">
-                <h3>Quinzena</h3>
-                <div class="price-value">R$ 1.500</div>
-                <div class="anchor-box">Mais barato que panfleto.</div>
-                <a href="https://wa.me/5535999463566" class="btn" style="margin-top: 20px; font-size: 0.8rem;">Cotar</a>
+                <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
+                <div class="anchor-box"><strong>Custo por Pessoa:</strong> R$ 0,002.<br>Mais barato que um panfleto.</div>
+                <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.8rem; text-align: center;">Checar Próxima Data Livre</a>
+            </div>
+            <div class="price-card">
+                <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
+                <div class="anchor-box green">Google Ads: R$ 2,00 por <strong>1 Clique</strong>.<br>Ditos: R$ 2,00 por <strong>1.000 Pessoas</strong>.</div>
+                <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.8rem; text-align: center;">Checar Próxima Data Livre</a>
             </div>
             <div class="price-card featured">
-                <h3>Semestral</h3>
-                <div class="price-value text-highlight">R$ 1.750</div>
-                <div class="anchor-box yellow">CPM: R$ 1,45 (Imbatível).</div>
-                <a href="https://wa.me/5535999463566" class="btn" style="margin-top: 20px; background: var(--whatsapp-green); border: none; color: #fff;">Reservar</a>
+                <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
+                <div class="anchor-box yellow"><strong>CPM: R$ 1,45.</strong><br>O menor custo por mil visualizações.</div>
+                <p style="font-size: 0.8rem; color: #777; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
+                <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
+                <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn btn-pulse-yellow" style="margin-top: auto; padding: 14px; font-size: 0.8rem; text-align: center; background-color: var(--whatsapp-green); color: white; border: none;">Bloquear Agenda por 6 Meses</a>
             </div>
+        </div>
+        <div class="final-cta">
+            <p style="color: #888; margin-bottom: 15px;">A rodovia não espera. Sua concorrência também não.</p>
+            <a href="https://wa.me/5535999463566?text=Tenho%20urg%C3%AAncia%20em%20anunciar">Conversar sem compromisso →</a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header"><h2>Dúvidas Frequentes</h2><p>Transparência total antes de fechar.</p></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)"><span>Eu preciso fornecer a lona?</span><span class="faq-icon">+</span></div><div class="faq-answer"><p>Sim. O valor da locação refere-se ao espaço de mídia. Porém, nós temos parceiros homologados que entregam a produção e instalação com preço de custo.</p></div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)"><span>Tem contrato mínimo?</span><span class="faq-icon">+</span></div><div class="faq-answer"><p>Temos flexibilidade. Você pode contratar desde uma Quinzena (Spot Rápido) até planos Semestrais.</p></div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)"><span>Como funciona o pagamento?</span><span class="faq-icon">+</span></div><div class="faq-answer"><p>Trabalhamos com faturamento direto para sua empresa (Boleto ou PIX), facilitando a aprovação no seu financeiro.</p></div></div>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <div style="flex: 1;"><h4>Ditos Painéis</h4><p>Rodovia JK, Km 103</p></div>
-            <div style="flex: 1; text-align: right;"><h4>Contato</h4><p>bit.ly/ditos-whatsapp</p></div>
+            <div class="footer-block"><h4>Ditos Painéis</h4><p><strong>Infraestrutura OOH</strong><br>Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>Pouso Alegre - MG, 37550-000</p></div>
+            <div class="footer-block contact-info"><h4>Contato</h4><p><a href="https://wa.me/5535999463566" target="_blank"><span style="margin-right: 5px;">📱</span> (35) 99946-3566</a></p><p><a href="mailto:ditospaineis@gmail.com"><span style="margin-right: 5px;">✉️</span> ditospaineis@gmail.com</a></p></div>
         </div>
+        <div class="footer-legal">CNPJ: 42.245.964/0001-40<br>Ditos Painéis © 2025. Todos os direitos reservados.</div>
     </footer>
 
     <script>
-        // FAQ Logic
+        function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
         function toggleFAQ(element) {
             const item = element.parentElement;
-            item.classList.toggle('active');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-icon').innerText = '+'; });
+            if (!isActive) { item.classList.add('active'); element.querySelector('.faq-icon').innerText = '-'; }
         }
+        function toggleNightMode() {
+            document.body.classList.toggle('night-active');
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(img => {
+                if(document.body.classList.contains('night-active')) {
+                    img.setAttribute('src', img.getAttribute('data-night'));
+                } else {
+                    img.setAttribute('src', img.getAttribute('data-day'));
+                }
+            });
+        }
+        function updateCalc() {
+            const cpm = document.getElementById('digitalCpm').value;
+            document.getElementById('cpmValue').innerText = 'R$ ' + cpm + ',00';
+            const digitalCost = (1200000 / 1000) * cpm;
+            const ditosCost = 2500;
+            const savings = digitalCost - ditosCost;
+            document.getElementById('savingsValue').innerText = 'R$ ' + savings.toLocaleString('pt-BR');
+        }
+        updateCalc();
 
-        // GSAP Init
         gsap.registerPlugin(ScrollTrigger);
         gsap.to(".hero-bg", { scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }, y: 200 });
-        gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2 });
-        
-        // Scrollytelling Logic
-        gsap.utils.toArray('.step-card').forEach(step => {
-            ScrollTrigger.create({
-                trigger: step, start: "top 60%", end: "top 30%",
-                onEnter: () => step.classList.add('active'),
-                onLeaveBack: () => step.classList.remove('active')
-            });
-        });
+        gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+        gsap.to(".hero-cta-wrapper", { opacity: 1, duration: 1, delay: 0.8 });
+        gsap.from(".scroll-indicator", { opacity: 0, delay: 2, duration: 1 });
+
+        gsap.utils.toArray(".stat-number").forEach(stat => { let target = parseFloat(stat.getAttribute("data-target")); ScrollTrigger.create({ trigger: stat, start: "top 85%", once: true, onEnter: () => { let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 2.5, ease: "power2.out", onUpdate: () => { if(target >= 1000) stat.innerText = Math.ceil(obj.val/1000) + "k+"; else if (target === 100) stat.innerText = Math.ceil(obj.val) + "%"; else stat.innerText = Math.ceil(obj.val) + "h"; } }); } }); });
+        gsap.utils.toArray('.step-card').forEach(step => { ScrollTrigger.create({ trigger: step, start: "top 60%", end: "top 30%", onEnter: () => step.classList.add('active'), onLeaveBack: () => step.classList.remove('active') }); });
+        gsap.utils.toArray('.gallery-header').forEach(header => { gsap.to(header, { scrollTrigger: { trigger: header, start: "top 80%" }, opacity: 1, duration: 0.8 }); });
+        let groups = document.querySelectorAll('.gallery-grid, .mockup-grid');
+        groups.forEach(group => { let items = group.querySelectorAll('.gallery-item, .mockup-card-flip'); gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" }); });
+        gsap.to(".landmark-item", { scrollTrigger: { trigger: ".map-info", start: "top 70%" }, opacity: 1, x: 0, duration: 0.6, stagger: 0.2 });
+        gsap.to(".price-card", { scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" });
+        gsap.from(".calc-wrapper", { scrollTrigger: { trigger: ".calculator-section", start: "top 80%" }, y: 50, opacity: 0, duration: 1, ease: "power2.out" });
     </script>
 </body>
 </html>
