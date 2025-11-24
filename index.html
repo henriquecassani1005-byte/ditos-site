@@ -15,7 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -29,6 +29,7 @@
             --concrete-gray: #1a1a1a;
             --text-gray: #a1a1a1;
             --whatsapp-green: #25D366;
+            --urgency-red: #ff4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,38 +58,18 @@
             background-color: var(--signal-yellow);
             color: #000;
             padding: 18px 36px;
-            font-weight: 800;
+            font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 4px;
             font-size: 0.9rem;
             letter-spacing: 1px;
+            margin-top: 30px;
             transition: all 0.3s ease;
-            border: 2px solid var(--signal-yellow);
+            border: 1px solid var(--signal-yellow);
             cursor: pointer;
         }
-        .btn:hover { 
-            background-color: transparent; 
-            color: var(--signal-yellow); 
-            box-shadow: 0 0 25px rgba(255, 213, 0, 0.3); 
-        }
-        /* Wrapper para garantir visibilidade do botão no Hero */
-        .hero-cta-wrapper {
-            margin-top: 40px;
-            position: relative;
-            z-index: 10;
-            display: block;
-        }
-
-        /* Botão Pulsante Amarelo */
-        .btn-pulse-yellow {
-            animation: pulse-yellow-anim 2s infinite;
-        }
-        @keyframes pulse-yellow-anim {
-            0% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 213, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 213, 0, 0); }
-        }
+        .btn:hover { background-color: transparent; color: var(--signal-yellow); box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
 
         /* FAB WhatsApp */
         .fab-whatsapp {
@@ -96,7 +77,7 @@
             background-color: var(--whatsapp-green); color: white;
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 9999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 1000;
             transition: transform 0.3s; text-decoration: none;
         }
         .fab-whatsapp:hover { transform: scale(1.1); }
@@ -106,38 +87,27 @@
         header {
             position: fixed; top: 0; left: 0; width: 100%; padding: 20px 5%;
             z-index: 999; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(10, 10, 10, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 10, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px); transition: top 0.3s;
         }
-        .nav-logo { height: 35px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .nav-logo { height: 32px; width: auto; display: block; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
         
         .nav-links { display: none; gap: 40px; align-items: center; }
         @media (min-width: 768px) { .nav-links { display: flex; } }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--signal-yellow); }
-        .cta-header { background-color: var(--signal-yellow); color: #000 !important; padding: 10px 24px; border-radius: 4px; font-weight: 800 !important; }
-        .cta-header:hover { background-color: #fff; }
+        .cta-header { border: 1px solid var(--signal-yellow); color: var(--signal-yellow) !important; padding: 8px 20px; border-radius: 4px; }
+        .cta-header:hover { background: var(--signal-yellow); color: #000 !important; }
 
         /* Mobile Controls */
-        .mobile-menu-btn { display: block; color: #fff; font-size: 1.8rem; cursor: pointer; z-index: 1001; }
+        .mobile-menu-btn { display: block; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
         @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
-        
         .mobile-controls { display: flex; align-items: center; gap: 20px; }
         @media (min-width: 768px) { .mobile-controls { display: none; } }
-        
-        .mobile-cta-small {
-            background-color: var(--whatsapp-green); color: white; padding: 8px 16px; border-radius: 4px;
-            font-size: 0.8rem; font-weight: 700; text-decoration: none; text-transform: uppercase;
-        }
-
-        .mobile-menu-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: var(--carbon-black);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 998; transform: translateX(100%); transition: transform 0.4s ease-in-out;
-        }
+        .mobile-cta-small { background-color: var(--whatsapp-green); color: white; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+        .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--carbon-black); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 998; transform: translateX(100%); transition: transform 0.4s ease-in-out; }
         .mobile-menu-overlay.open { transform: translateX(0); }
-        .mobile-menu-overlay a { color: #fff; font-size: 1.5rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
+        .mobile-menu-overlay a { color: #fff; font-size: 2rem; text-decoration: none; margin: 20px 0; font-weight: 800; text-transform: uppercase; }
 
         /* Hero */
         .hero {
@@ -150,18 +120,14 @@
             z-index: -1; will-change: transform;
         }
         .hero-content { position: relative; z-index: 5; } 
-        /* REMOVIDO OPACITY: 0 PARA EVITAR BUG VISUAL */
         .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); max-width: 950px; margin-top: 40px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .hero p { font-size: clamp(1.1rem, 1.5vw, 1.4rem); max-width: 650px; border-left: 4px solid var(--signal-yellow); padding-left: 25px; margin-bottom: 10px; color: #e0e0e0; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
-            color: #fff; font-size: 2rem; animation: bounce 2s infinite; opacity: 0.7; z-index: 5;
-        }
+        
+        .hero-cta-wrapper { margin-top: 40px; position: relative; z-index: 10; display: block; }
+        .scroll-indicator { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 2rem; animation: bounce 2s infinite; opacity: 0.7; z-index: 5; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
 
-        /* Stats Bar */
+        /* Stats */
         .stats-section {
             padding: 60px 8%; background: #111; border-bottom: 1px solid #222;
             display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center; position: relative; z-index: 5;
@@ -254,6 +220,35 @@
         .companies-list { list-style: none; padding: 0; margin-top: 5px; }
         .companies-list li { color: #aaa; font-size: 0.85rem; margin-bottom: 6px; display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
 
+        /* === SEÇÃO DE MOCKUPS (NOVA) === */
+        .mockup-section { padding: 100px 5%; background-color: #0e0e0e; border-top: 1px solid #222; }
+        .mockup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .mockup-card { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: 8px; border: 1px solid #333; cursor: crosshair; }
+        
+        .mockup-image {
+            width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+            transition: opacity 0.5s ease;
+        }
+        .mockup-after { opacity: 0; z-index: 2; }
+        
+        /* Efeito de Reveal no Hover */
+        .mockup-card:hover .mockup-after { opacity: 1; }
+        
+        .mockup-label {
+            position: absolute; top: 15px; left: 15px; z-index: 10;
+            background: rgba(0,0,0,0.7); color: #fff; padding: 5px 12px; font-size: 0.75rem;
+            font-weight: 700; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;
+            border: 1px solid #444;
+        }
+        .mockup-instruction {
+            position: absolute; bottom: 15px; right: 15px; z-index: 10;
+            color: var(--signal-yellow); font-size: 0.8rem; font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            pointer-events: none;
+        }
+        .mockup-card:hover .mockup-instruction { opacity: 0; } /* Esconde instrução ao passar mouse */
+
+
         /* Calculadora ROI */
         .calculator-section { padding: 80px 5%; background-color: #121212; border-top: 1px solid #333; }
         .calc-wrapper { max-width: 900px; margin: 0 auto; background: #1a1a1a; border-radius: 12px; padding: 40px; border: 1px solid #333; display: flex; flex-wrap: wrap; gap: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
@@ -290,11 +285,12 @@
         .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
 
         footer { padding: 80px 20px; border-top: 1px solid #222; background: #050505; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; max-width: 1000px; margin: 0 auto 40px auto; text-align: left; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto 40px auto; text-align: left; }
         .footer-block { flex: 1; min-width: 280px; text-align: center; }
         @media (min-width: 768px) { .footer-block { text-align: left; } .footer-block.contact-info { text-align: right; } }
         .footer-block a { display: inline-flex; align-items: center; justify-content: center; color: var(--signal-yellow); text-decoration: none; }
         @media (min-width: 768px) { .footer-block a { justify-content: flex-end; } }
+        .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
     </style>
 </head>
 <body>
@@ -434,6 +430,33 @@
         </div>
     </section>
 
+    <section id="mockups" class="mockup-section">
+        <div class="gallery-header">
+            <h3>O Poder da Transformação</h3>
+            <p>Visualize o impacto da sua marca dominando a paisagem. Passe o mouse (ou toque) para revelar o potencial.</p>
+        </div>
+        <div class="mockup-grid">
+            <div class="mockup-card">
+                <span class="mockup-label">Automotivo</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="https://placehold.co/900x300/111/FFD500?text=SEU+CARRO+AQUI+(MOCKUP)" class="mockup-image mockup-after" alt="Mockup Carro">
+            </div>
+            <div class="mockup-card">
+                <span class="mockup-label">Fitness</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="https://placehold.co/900x300/111/FFD500?text=SUA+ACADEMIA+AQUI+(MOCKUP)" class="mockup-image mockup-after" alt="Mockup Gym">
+            </div>
+            <div class="mockup-card">
+                <span class="mockup-label">Imobiliária</span>
+                <span class="mockup-instruction">Toque para ver</span>
+                <img src="foto-outdoor.jpg" class="mockup-image" alt="Outdoor Vazio">
+                <img src="https://placehold.co/900x300/111/FFD500?text=SEU+LAN%C3%87AMENTO+AQUI+(MOCKUP)" class="mockup-image mockup-after" alt="Mockup Imob">
+            </div>
+        </div>
+    </section>
+
     <section id="calculator" class="calculator-section">
         <div class="calc-wrapper">
             <div class="calc-input">
@@ -534,25 +557,8 @@
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.to(".hero-bg", { scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }, y: 200 });
-        
-        // HERO ANIMATION FIX (REMOVED FROM TWEEN TO AVOID CONFLICT)
-        gsap.from(".hero h1, .hero p", {
-            y: 50,
-            opacity: 0,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power3.out",
-            delay: 0.2
-        });
-
-        gsap.from(".hero-cta-wrapper", {
-             y: 50,
-             opacity: 0,
-             duration: 1,
-             delay: 0.8,
-             ease: "back.out(1.7)"
-        });
-        
+        gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+        gsap.from(".hero-cta-wrapper", { y: 50, opacity: 0, duration: 1, delay: 0.8, ease: "back.out(1.7)" });
         gsap.from(".scroll-indicator", { opacity: 0, delay: 2, duration: 1 });
 
         gsap.utils.toArray(".stat-number").forEach(stat => { let target = parseFloat(stat.getAttribute("data-target")); ScrollTrigger.create({ trigger: stat, start: "top 85%", once: true, onEnter: () => { let obj = { val: 0 }; gsap.to(obj, { val: target, duration: 2.5, ease: "power2.out", onUpdate: () => { if(target >= 1000) stat.innerText = Math.ceil(obj.val/1000) + "k+"; else if (target === 100) stat.innerText = Math.ceil(obj.val) + "%"; else stat.innerText = Math.ceil(obj.val) + "h"; } }); } }); });
