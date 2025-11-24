@@ -188,30 +188,42 @@
         .gallery-caption p { color: #fff; font-size: 0.9rem; line-height: 1.4; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
         .video-tag { position: absolute; top: 20px; left: 20px; background: #cc0000; color: white; padding: 5px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 4px; z-index: 10; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* MARQUEE SLOW */
+        /* CARROSSEL DE PARCEIROS (COM IMAGENS E FILTRO CSS) */
         .partners-section {
-            padding: 50px 0; background-color: #161616;
+            padding: 60px 0; background-color: #161616;
             border-top: 1px solid #222; border-bottom: 1px solid #222; overflow: hidden;
         }
-        .partners-header { text-align: center; margin-bottom: 30px; padding: 0 20px; }
+        .partners-header { text-align: center; margin-bottom: 40px; padding: 0 20px; }
         .partners-header h3 { color: #ddd; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin: 0; }
+        
         .marquee-container {
             display: flex; width: 100%; position: relative;
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
         .marquee-track {
-            display: flex; gap: 80px; animation: scroll 80s linear infinite; white-space: nowrap; padding-left: 80px;
+            display: flex; gap: 80px; animation: scroll 80s linear infinite; white-space: nowrap; padding-left: 80px; align-items: center;
         }
         .marquee-container:hover .marquee-track { animation-play-state: paused; }
-        .partner-logo {
-            font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800;
-            color: #fff; opacity: 0.3; transition: all 0.3s ease; display: flex; align-items: center; cursor: default; user-select: none;
+        
+        /* Estilo da Logo Parceira (Magic Filter) */
+        .partner-logo img {
+            height: 50px; /* Altura padrão */
+            width: auto;
+            filter: grayscale(100%) brightness(100%) contrast(0%) opacity(0.5); /* Torna cinza/escuro */
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
-        .partner-logo:hover { opacity: 1; color: var(--signal-yellow); transform: scale(1.05); }
+        /* Ao passar o mouse: cor original e brilho */
+        .partner-logo img:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.1);
+        }
+
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         @media (max-width: 768px) {
-            .marquee-track { gap: 50px; animation-duration: 50s; } .partner-logo { font-size: 1.2rem; }
+            .marquee-track { gap: 50px; animation-duration: 50s; } 
+            .partner-logo img { height: 40px; }
         }
 
         /* Mapa Clean */
@@ -269,55 +281,22 @@
         .faq-icon { transition: transform 0.3s; font-size: 1.5rem; color: var(--signal-yellow); }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-        footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.85rem; background: #080808; line-height: 1.8; }
-        footer a { color: var(--signal-yellow); text-decoration: none; transition: color 0.2s; }
-        .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
-        
-        /* Novo Estilo para o Rodapé com Informações de Contato */
+        /* Novo Rodapé com Contato */
+        footer { padding: 80px 20px; border-top: 1px solid #222; background: #080808; }
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto 40px auto;
-            text-align: left;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto 40px auto; text-align: left;
         }
-        
-        .footer-block {
-            flex: 1;
-            min-width: 280px;
-            text-align: center; /* Centralizado por padrão */
-        }
-        
+        .footer-block { flex: 1; min-width: 280px; text-align: center; }
         @media (min-width: 768px) {
-            .footer-block { text-align: left; } /* Esquerda no desktop */
+            .footer-block { text-align: left; } 
             .footer-block.contact-info { text-align: right; }
         }
-
-        .footer-block h4 {
-            color: #fff;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-block p {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .footer-block a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center; /* Centralizado no mobile */
-        }
-        @media (min-width: 768px) {
-            .footer-block a { justify-content: flex-end; } /* Direita no desktop */
-        }
-
+        .footer-block h4 { color: #fff; margin-bottom: 15px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-block p { color: #888; font-size: 0.9rem; margin-bottom: 10px; }
+        .footer-block a { display: inline-flex; align-items: center; justify-content: center; color: var(--signal-yellow); text-decoration: none; transition: 0.3s; }
+        .footer-block a:hover { color: #fff; }
+        @media (min-width: 768px) { .footer-block a { justify-content: flex-end; } }
+        .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; }
     </style>
 </head>
 <body>
@@ -383,7 +362,6 @@
     </section>
 
     <section id="galeria" class="gallery-section">
-        
         <div class="gallery-header">
             <h3>Lado: Mercado Baronesa</h3>
             <p>Influência no momento da compra. Audiência qualificada pronta para o consumo.</p>
@@ -435,7 +413,6 @@
                 <div class="gallery-caption"><h5>Employer Branding</h5><p>Farol para atrair talentos.</p></div>
             </div>
         </div>
-
     </section>
 
     <section class="partners-section">
@@ -444,30 +421,22 @@
         </div>
         <div class="marquee-container">
             <div class="marquee-track">
-                <span class="partner-logo">Volkswagen</span>
-                <span class="partner-logo">Skyfit</span>
-                <span class="partner-logo">Hotel Marques Plaza</span>
-                <span class="partner-logo">Colégio Anglo</span>
-                <span class="partner-logo">Mart Minas</span>
-                <span class="partner-logo">Costela no Bafo</span>
-                <span class="partner-logo">Hipermercado Baronesa</span>
-                <span class="partner-logo">Construarte</span>
-                <span class="partner-logo">Volkswagen</span>
-                <span class="partner-logo">Skyfit</span>
-                <span class="partner-logo">Hotel Marques Plaza</span>
-                <span class="partner-logo">Colégio Anglo</span>
-                <span class="partner-logo">Mart Minas</span>
-                <span class="partner-logo">Costela no Bafo</span>
-                <span class="partner-logo">Hipermercado Baronesa</span>
-                <span class="partner-logo">Construarte</span>
-                <span class="partner-logo">Volkswagen</span>
-                <span class="partner-logo">Skyfit</span>
-                <span class="partner-logo">Hotel Marques Plaza</span>
-                <span class="partner-logo">Colégio Anglo</span>
-                <span class="partner-logo">Mart Minas</span>
-                <span class="partner-logo">Costela no Bafo</span>
-                <span class="partner-logo">Hipermercado Baronesa</span>
-                <span class="partner-logo">Construarte</span>
+                <div class="partner-logo"><img src="logo-vw.png" alt="Volkswagen"></div>
+                <div class="partner-logo"><img src="logo-skyfit.png" alt="Skyfit"></div>
+                <div class="partner-logo"><img src="logo-plaza.png" alt="Hotel Marques Plaza"></div>
+                <div class="partner-logo"><img src="logo-anglo.png" alt="Colégio Anglo"></div>
+                <div class="partner-logo"><img src="logo-mart.png" alt="Mart Minas"></div>
+                <div class="partner-logo"><img src="logo-costela.png" alt="Costela no Bafo"></div>
+                <div class="partner-logo"><img src="logo-baronesa.png" alt="Hipermercado Baronesa"></div>
+                <div class="partner-logo"><img src="logo-construarte.png" alt="Construarte"></div>
+                <div class="partner-logo"><img src="logo-vw.png" alt="Volkswagen"></div>
+                <div class="partner-logo"><img src="logo-skyfit.png" alt="Skyfit"></div>
+                <div class="partner-logo"><img src="logo-plaza.png" alt="Hotel Marques Plaza"></div>
+                <div class="partner-logo"><img src="logo-anglo.png" alt="Colégio Anglo"></div>
+                <div class="partner-logo"><img src="logo-mart.png" alt="Mart Minas"></div>
+                <div class="partner-logo"><img src="logo-costela.png" alt="Costela no Bafo"></div>
+                <div class="partner-logo"><img src="logo-baronesa.png" alt="Hipermercado Baronesa"></div>
+                <div class="partner-logo"><img src="logo-construarte.png" alt="Construarte"></div>
             </div>
         </div>
     </section>
@@ -481,19 +450,8 @@
             <p style="font-size: 1rem; color: #888;">A localização mais nobre da entrada de Pouso Alegre.</p>
             
             <div class="landmark-list">
-                <div class="landmark-item">
-                    <div class="landmark-icon"></div> 
-                    <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div>
-                </div>
-                
-                <div class="landmark-item">
-                    <div class="landmark-icon" style="background-color: #fff;"></div> 
-                    <div class="landmark-info">
-                        <span>Vizinhança</span>
-                        <small>Hipermercado Baronesa e Construarte (Vizinhos de Muro).</small>
-                    </div>
-                </div>
-
+                <div class="landmark-item"><div class="landmark-icon"></div> <div class="landmark-info"><span>Outdoor Ditos</span><small>Ponto Focal Km 103</small></div></div>
+                <div class="landmark-item"><div class="landmark-icon" style="background-color: #fff;"></div> <div class="landmark-info"><span>Vizinhança</span><small>Hipermercado Baronesa e Construarte (Vizinhos de Muro).</small></div></div>
                 <div class="landmark-item">
                     <div class="landmark-icon" style="background-color: #555;"></div> 
                     <div class="landmark-info" style="width: 100%;">
@@ -517,42 +475,21 @@
         <p style="color: #aaa; margin-bottom: 40px;">Investimento para dominar a Rodovia JK.</p>
         
         <div class="pricing-grid">
-            
             <div class="price-card">
-                <h3>Quinzena</h3> 
-                <p class="price-period">Spot Rápido (15 Dias)</p> 
-                <div class="price-value">R$ 1.500</div>
-                
-                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #ddd; border-left: 3px solid #666;">
-                    <strong>Custo por Pessoa:</strong> R$ 0,002.<br>Mais barato que um panfleto.
-                </div>
-
+                <h3>Quinzena</h3> <p class="price-period">Spot Rápido (15 Dias)</p> <div class="price-value">R$ 1.500</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #ddd; border-left: 3px solid #666;"><strong>Custo por Pessoa:</strong> R$ 0,002.<br>Mais barato que um panfleto.</div>
                 <ul class="price-features"> <li>Promoções Relâmpago</li> <li>Datas Comemorativas</li> <li>Entrada Imediata</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20cotar%20quinzena" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
-
             <div class="price-card">
-                <h3>Mensal</h3> 
-                <p class="price-period">30 Dias de Exposição</p> 
-                <div class="price-value">R$ 2.500</div>
-                
-                <div style="background: rgba(37, 211, 102, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--whatsapp-green);">
-                    Google Ads: R$ 2,00 por <strong>1 Clique</strong>.<br>Ditos: R$ 2,00 por <strong>1.000 Pessoas</strong>.
-                </div>
-
+                <h3>Mensal</h3> <p class="price-period">30 Dias de Exposição</p> <div class="price-value">R$ 2.500</div>
+                <div style="background: rgba(37, 211, 102, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--whatsapp-green);">Google Ads: R$ 2,00 por <strong>1 Clique</strong>.<br>Ditos: R$ 2,00 por <strong>1.000 Pessoas</strong>.</div>
                 <ul class="price-features"> <li>Branding e Fixação</li> <li>Ciclo completo de vendas</li> <li>Impacto contínuo</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20cotar%20mensal" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center;">Falar com Consultor</a>
             </div>
-
             <div class="price-card featured">
-                <h3>Semestral</h3> 
-                <p class="price-period">Valor Mensal (Contrato 6 meses)</p> 
-                <div class="price-value text-highlight">R$ 1.750</div>
-                
-                <div style="background: rgba(255, 213, 0, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--signal-yellow);">
-                    <strong>CPM: R$ 1,45.</strong><br>O menor custo por mil visualizações da história de Pouso Alegre.
-                </div>
-
+                <h3>Semestral</h3> <p class="price-period">Valor Mensal (Contrato 6 meses)</p> <div class="price-value text-highlight">R$ 1.750</div>
+                <div style="background: rgba(255, 213, 0, 0.1); padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.85rem; color: #fff; border-left: 3px solid var(--signal-yellow);"><strong>CPM: R$ 1,45.</strong><br>O menor custo por mil visualizações da história de Pouso Alegre.</div>
                 <p style="font-size: 0.85rem; color: #999; margin-bottom: 20px;">Total do contrato: R$ 10.500</p>
                 <ul class="price-features"> <li><strong>30% de Desconto</strong></li> <li>Domínio Territorial</li> <li>Preferência de Renovação</li> </ul>
                 <a href="https://wa.me/5535999463566?text=Quero%20o%20Plano%20Semestral%20com%20Desconto" class="btn" style="margin-top: auto; padding: 14px; font-size: 0.9rem; text-align: center; background-color: var(--whatsapp-green); color: white;">Reservar Espaço</a>
@@ -571,35 +508,17 @@
                 <h2>Dúvidas Frequentes</h2>
                 <p>Transparência total antes de fechar.</p>
             </div>
-            
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Eu preciso fornecer a lona?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sim. O valor da locação refere-se ao espaço de mídia. Porém, nós temos parceiros homologados que entregam a produção e instalação com preço de custo para nossos clientes. Cuidamos de toda a logística para você.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)"><span>Eu preciso fornecer a lona?</span><span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Sim. O valor da locação refere-se ao espaço de mídia. Porém, nós temos parceiros homologados que entregam a produção e instalação com preço de custo para nossos clientes. Cuidamos de toda a logística para você.</p></div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Tem contrato mínimo?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Temos flexibilidade. Você pode contratar desde uma Quinzena (Spot Rápido) até planos Semestrais. O plano Semestral oferece o maior desconto (30%) e garante que ninguém tome o seu ponto.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)"><span>Tem contrato mínimo?</span><span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Temos flexibilidade. Você pode contratar desde uma Quinzena (Spot Rápido) até planos Semestrais. O plano Semestral oferece o maior desconto (30%) e garante que ninguém tome o seu ponto.</p></div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Como funciona o pagamento?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Trabalhamos com faturamento direto para sua empresa (Boleto ou PIX), facilitando a aprovação no seu financeiro. O primeiro pagamento garante a reserva da data.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)"><span>Como funciona o pagamento?</span><span class="faq-icon">+</span></div>
+                <div class="faq-answer"><p>Trabalhamos com faturamento direto para sua empresa (Boleto ou PIX), facilitando a aprovação no seu financeiro. O primeiro pagamento garante a reserva da data.</p></div>
             </div>
         </div>
     </section>
@@ -607,78 +526,35 @@
     <footer>
         <div class="footer-content">
             <div class="footer-block">
-                <p><strong>Ditos Painéis & Gestão OOH</strong></p>
-                <p>Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>
+                <h4>Ditos Painéis</h4>
+                <p><strong>Infraestrutura OOH</strong><br>
+                Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>
                 Pouso Alegre - MG, 37550-000</p>
             </div>
-
             <div class="footer-block contact-info">
                 <h4>Informações para Contato</h4>
-                <p>
-                    <a href="https://wa.me/5535999463566" target="_blank">
-                        <span style="margin-right: 5px;">📱</span> (35) 99946-3566
-                    </a>
-                </p>
-                <p>
-                    <a href="mailto:ditospaineis@gmail.com">
-                        <span style="margin-right: 5px;">✉️</span> ditospaineis@gmail.com
-                    </a>
-                </p>
+                <p><a href="https://wa.me/5535999463566" target="_blank"><span style="margin-right: 5px;">📱</span> (35) 99946-3566</a></p>
+                <p><a href="mailto:ditospaineis@gmail.com"><span style="margin-right: 5px;">✉️</span> ditospaineis@gmail.com</a></p>
             </div>
         </div>
-        
-        <div class="footer-legal">
-            CNPJ: 42.245.964/0001-40<br>
-            Ditos Painéis © 2025. Todos os direitos reservados.
-        </div>
+        <div class="footer-legal">CNPJ: 42.245.964/0001-40<br>Ditos Painéis © 2025. Todos os direitos reservados.</div>
     </footer>
 
     <script>
-        function toggleMenu() {
-            document.getElementById("mobileMenu").classList.toggle("open");
-        }
-
+        function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
         function toggleFAQ(element) {
             const item = element.parentElement;
             const isActive = item.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('active');
-                i.querySelector('.faq-icon').innerText = '+';
-            });
-            if (!isActive) {
-                item.classList.add('active');
-                element.querySelector('.faq-icon').innerText = '-';
-            }
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-icon').innerText = '+'; });
+            if (!isActive) { item.classList.add('active'); element.querySelector('.faq-icon').innerText = '-'; }
         }
-
         gsap.registerPlugin(ScrollTrigger);
-
-        gsap.to(".hero-bg", {
-            scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
-            y: 200
-        });
-        gsap.from(".hero-content > *", {
-            y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2
-        });
-
-        gsap.utils.toArray('.step-card').forEach(step => {
-            ScrollTrigger.create({
-                trigger: step, start: "top 60%", end: "top 30%",
-                onEnter: () => step.classList.add('active'),
-                onLeaveBack: () => step.classList.remove('active')
-            });
-        });
-
-        gsap.utils.toArray('.gallery-header').forEach(header => {
-            gsap.to(header, { scrollTrigger: { trigger: header, start: "top 80%" }, opacity: 1, duration: 0.8 });
-        });
-        
+        gsap.to(".hero-bg", { scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }, y: 200 });
+        gsap.from(".hero-content > *", { y: 50, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+        gsap.utils.toArray('.step-card').forEach(step => { ScrollTrigger.create({ trigger: step, start: "top 60%", end: "top 30%", onEnter: () => step.classList.add('active'), onLeaveBack: () => step.classList.remove('active') }); });
+        gsap.utils.toArray('.gallery-header').forEach(header => { gsap.to(header, { scrollTrigger: { trigger: header, start: "top 80%" }, opacity: 1, duration: 0.8 }); });
         let groups = document.querySelectorAll('.gallery-grid');
-        groups.forEach(group => {
-            let items = group.querySelectorAll('.gallery-item');
-            gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" });
-        });
-
+        groups.forEach(group => { let items = group.querySelectorAll('.gallery-item'); gsap.to(items, { scrollTrigger: { trigger: group, start: "top 75%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" }); });
         gsap.to(".landmark-item", { scrollTrigger: { trigger: ".map-info", start: "top 70%" }, opacity: 1, x: 0, duration: 0.6, stagger: 0.2 });
         gsap.to(".price-card", { scrollTrigger: { trigger: ".pricing-grid", start: "top 80%" }, opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" });
     </script>
