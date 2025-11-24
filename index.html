@@ -188,71 +188,31 @@
         .gallery-caption p { color: #fff; font-size: 0.9rem; line-height: 1.4; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
         .video-tag { position: absolute; top: 20px; left: 20px; background: #cc0000; color: white; padding: 5px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 4px; z-index: 10; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* =========================================
-           NOVA SEÇÃO: CARROSSEL INFINITO (MARQUEE)
-           ========================================= */
+        /* MARQUEE SLOW */
         .partners-section {
-            padding: 50px 0;
-            background-color: #161616; /* Fundo cinza sutil */
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
-            overflow: hidden; /* Esconde a barra de rolagem horizontal */
+            padding: 50px 0; background-color: #161616;
+            border-top: 1px solid #222; border-bottom: 1px solid #222; overflow: hidden;
         }
-        
         .partners-header { text-align: center; margin-bottom: 30px; padding: 0 20px; }
-        .partners-header h4 { 
-            color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; 
-        }
-
-        /* O Container que segura a animação */
+        .partners-header h3 { color: #ddd; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin: 0; }
         .marquee-container {
-            display: flex;
-            width: 100%;
-            position: relative;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fade nas bordas */
+            display: flex; width: 100%; position: relative;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-
-        /* A faixa que se move */
         .marquee-track {
-            display: flex;
-            gap: 60px; /* Espaço entre logos */
-            animation: scroll 35s linear infinite; /* Velocidade do loop */
-            white-space: nowrap;
-            padding-left: 60px; /* Espaço inicial */
+            display: flex; gap: 80px; animation: scroll 80s linear infinite; white-space: nowrap; padding-left: 80px;
         }
-        
-        /* Pausa ao passar o mouse */
         .marquee-container:hover .marquee-track { animation-play-state: paused; }
-
-        /* Estilo dos Logos (Texto simulando logo) */
         .partner-logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            opacity: 0.3; /* Monocromático suave */
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            cursor: default;
-            user-select: none;
+            font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800;
+            color: #fff; opacity: 0.3; transition: all 0.3s ease; display: flex; align-items: center; cursor: default; user-select: none;
         }
-
-        /* Efeito Hover Individual */
         .partner-logo:hover { opacity: 1; color: var(--signal-yellow); transform: scale(1.05); }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); } /* Move para a esquerda */
-        }
-
-        /* Ajuste Mobile */
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         @media (max-width: 768px) {
-            .marquee-track { gap: 40px; animation-duration: 25s; }
-            .partner-logo { font-size: 1.2rem; }
+            .marquee-track { gap: 50px; animation-duration: 50s; } .partner-logo { font-size: 1.2rem; }
         }
-
 
         /* Mapa Clean */
         .map-section { display: flex; flex-wrap: wrap; background-color: #161616; }
@@ -263,7 +223,6 @@
         .landmark-icon { width: 12px; height: 12px; background-color: var(--signal-yellow); border-radius: 50%; margin-right: 15px; margin-top: 6px; flex-shrink: 0; box-shadow: 0 0 12px rgba(255, 213, 0, 0.4); }
         .landmark-info span { display: block; color: #fff; font-weight: 600; margin-bottom: 2px; font-size: 1rem; }
         .landmark-info small { color: #888; font-size: 0.85rem; line-height: 1.4; display: block; }
-        
         .companies-list { list-style: none; padding: 0; margin-top: 5px; }
         .companies-list li { color: #aaa; font-size: 0.85rem; margin-bottom: 6px; display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
         .companies-list li strong { color: #ddd; font-weight: 500; }
@@ -313,6 +272,52 @@
         footer { text-align: center; padding: 80px 20px; border-top: 1px solid #222; color: #666; font-size: 0.85rem; background: #080808; line-height: 1.8; }
         footer a { color: var(--signal-yellow); text-decoration: none; transition: color 0.2s; }
         .footer-legal { font-size: 0.75rem; color: #333; margin-top: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
+        
+        /* Novo Estilo para o Rodapé com Informações de Contato */
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            text-align: left;
+        }
+        
+        .footer-block {
+            flex: 1;
+            min-width: 280px;
+            text-align: center; /* Centralizado por padrão */
+        }
+        
+        @media (min-width: 768px) {
+            .footer-block { text-align: left; } /* Esquerda no desktop */
+            .footer-block.contact-info { text-align: right; }
+        }
+
+        .footer-block h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-block p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-block a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; /* Centralizado no mobile */
+        }
+        @media (min-width: 768px) {
+            .footer-block a { justify-content: flex-end; } /* Direita no desktop */
+        }
+
     </style>
 </head>
 <body>
@@ -600,12 +605,27 @@
     </section>
 
     <footer>
-        <p><strong>Ditos Painéis & Gestão OOH</strong><br>
-        Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>
-        Pouso Alegre - MG, 37550-000</p>
-        
-        <br>
-        <p><a href="mailto:ditospaineis@gmail.com">ditospaineis@gmail.com</a></p>
+        <div class="footer-content">
+            <div class="footer-block">
+                <p><strong>Ditos Painéis & Gestão OOH</strong></p>
+                <p>Rodovia Juscelino Kubitschek, Km 103 - Vila Beatriz<br>
+                Pouso Alegre - MG, 37550-000</p>
+            </div>
+
+            <div class="footer-block contact-info">
+                <h4>Informações para Contato</h4>
+                <p>
+                    <a href="https://wa.me/5535999463566" target="_blank">
+                        <span style="margin-right: 5px;">📱</span> (35) 99946-3566
+                    </a>
+                </p>
+                <p>
+                    <a href="mailto:ditospaineis@gmail.com">
+                        <span style="margin-right: 5px;">✉️</span> ditospaineis@gmail.com
+                    </a>
+                </p>
+            </div>
+        </div>
         
         <div class="footer-legal">
             CNPJ: 42.245.964/0001-40<br>
